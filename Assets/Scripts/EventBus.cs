@@ -8,4 +8,5 @@ public static class EventBus
     public static Action<bool> MouseLock;
     public static Action<bool> CameraLookEnabled;
 
+    public static Action UpdatePriceTags;
 }

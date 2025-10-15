@@ -10,11 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ccd87c44e0d9e434baaaf535c8c0c38b, type: 3}
-  m_Name: milk
+  m_Name: Milk
   m_EditorClassIdentifier: 
   Name: Milk
-  Amount: 20
-  MaxAmount: 20
   Size: 0
   prefab: {fileID: 6004203589859462821, guid: 11ed89297e2f12842a55ad6b18d0f0b2, type: 3}
   image: {fileID: 21300000, guid: 6a78b4d5672c9434fbf7475a09b1a960, type: 3}
+  Price: 24.8

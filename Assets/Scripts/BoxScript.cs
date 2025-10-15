@@ -5,14 +5,16 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class BoxScript : MonoBehaviour, IInteractableBox
+public class BoxScript : MonoBehaviour, IPickableObject, IInteractable
 {
     public PlayerScript player;
-    //public ProductSO product;
+    public ProductSO product;
 
     public Image box_image;
     public TextMeshProUGUI box_text;
 
+    public int Amount;
+    public int MaxAmount;
 
     public void Drop()
     {
@@ -26,15 +28,39 @@ public class BoxScript : MonoBehaviour, IInteractableBox
 
     public void PickUp()
     {
-        player.BoxPickup(gameObject);
+        player.Pickup(gameObject, ItemSize.BigItem);
     }
-    public void Init(ProductSO product)
+    public void Interact(GameObject interactor = null)
     {
+        PickUp();
+    }
+    public void Init(ProductSO product, int amount)
+    {
+        this.product = product;
+        Amount = amount;
+        MaxAmount= amount; //можливо переробити цю логіку
+        box_text.text = product.Name;
         box_image.sprite = product.image;
-        box_text.text = $"{product.name} {product.Amount}/{product.MaxAmount}";
+        UpdateAmountUI();
     }
 
+    public void TakeProduct()
+    {
+        Amount--;
+        UpdateAmountUI();
 
+        if (Amount <= 0)
+        {
+            player.GetComponent<PlayerScript>().CurrentItem = null;
+            Destroy(gameObject);
+        }
+    }
+
+    void UpdateAmountUI()
+    {
+        box_text.text = $"{product.name} {Amount}/{MaxAmount}";
+
+    }
     private void Start()
     {
         player = GameObject.Find("Player").GetComponent<PlayerScript>();

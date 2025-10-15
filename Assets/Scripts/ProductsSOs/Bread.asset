@@ -10,11 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ccd87c44e0d9e434baaaf535c8c0c38b, type: 3}
-  m_Name: Product
+  m_Name: Bread
   m_EditorClassIdentifier: 
-  Name: A test product???? What is inside???
-  Amount: 23
-  MaxAmount: 50
-  Size: 2
+  Name: Bread
+  Size: 1
   prefab: {fileID: 6004203589859462821, guid: 11ed89297e2f12842a55ad6b18d0f0b2, type: 3}
-  image: {fileID: 21300000, guid: 0ab2b6216d4d4cb45907377e821f881d, type: 3}
+  image: {fileID: 0}

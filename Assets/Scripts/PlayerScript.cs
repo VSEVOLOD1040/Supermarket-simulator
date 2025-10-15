@@ -1,27 +1,77 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class PlayerScript : MonoBehaviour
 {
     public GameObject CurrentItem;
-    public GameObject BoxPositionGameObject;
+    public GameObject BixItemPositionGameObject;
+    public GameObject SmallItemPositionGameObject;
+    public GameObject ToolPosition;
+    public TextMeshProUGUI UImoneytext;
+    public GameManager gameManager;
+    public int Money;
+    public static bool RaycastAllowed;
+    public void AddMoney(int money)
+    {
+        Money += money;
+        gameManager.UpdateBalance(Money);
 
-    public void BoxPickup(GameObject box)
+        UpdateUI();
+    }
+    public bool RemoveMoney(int money)
+    {
+        if (Money - money >= 0)
+        {
+            Money -= money;
+            UpdateUI();
+            gameManager.UpdateBalance(Money);
+
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+
+    }
+
+
+    private void Start()
+    {
+        UpdateUI();
+        RaycastAllowed = true;
+    }
+
+    public void Pickup(GameObject item, ItemSize size)
     {
 
         if (CheckInventory())
         {
-            box.GetComponent<BoxCollider>().enabled = false;
-            box.GetComponent<Rigidbody>().isKinematic = true;
+            item.GetComponent<BoxCollider>().enabled = false; //потрібно переробити для всіх коллайдерів
+            item.GetComponent<Rigidbody>().isKinematic = true;
 
-            box.transform.SetParent(gameObject.transform, true);
-            box.transform.localPosition = BoxPositionGameObject.transform.localPosition;
-            box.transform.rotation = gameObject.transform.rotation;
+            item.transform.SetParent(gameObject.transform, true);
+            item.transform.rotation = gameObject.transform.rotation;
 
-            
-            CurrentItem = box;
+            switch (size)
+            {
+                case ItemSize.BigItem:
+                    item.transform.localPosition = BixItemPositionGameObject.transform.localPosition;
+                    break;
+                case ItemSize.SmallItem:
+                    item.transform.localPosition = SmallItemPositionGameObject.transform.localPosition;
+                    break;
+                case ItemSize.Tool:
+                    item.transform.localPosition = ToolPosition.transform.localPosition;
+                    break;
+
+            }
+
+
+            CurrentItem = item;
         }
     }
 
@@ -55,33 +105,42 @@ public class PlayerScript : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (RaycastAllowed)
         {
-            Raycast();
-        }
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            if (CheckInventory("Box"))
+            if (Input.GetMouseButtonDown(0))
             {
-                CurrentItem.GetComponent<IInteractableBox>().Drop();
-                CurrentItem = null;
+                Raycast();
+            }
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                if (!CheckInventory())
+                {
+                    CurrentItem.GetComponent<IPickableObject>().Drop();
+                    CurrentItem = null;
+                }
             }
         }
+        
     }
 
     public void Raycast()
     {
+
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        IInteractableBox box = null;
+        IInteractable InteractableObject = null;
         if (Physics.Raycast(ray, out hit))
         {
-
-            if (hit.collider.gameObject.TryGetComponent<IInteractableBox>(out box))
+            if (hit.collider.gameObject.TryGetComponent<IInteractable>(out InteractableObject))
             {
-                box.PickUp();
+                InteractableObject.Interact(gameObject);
 
             }
         }
+    }
+
+    public void UpdateUI()
+    {
+        UImoneytext.text = $"Money: {Money}";
     }
 }

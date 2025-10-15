@@ -2,9 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IInteractableBox
+public interface IPickableObject
 {
     void PickUp();
     void Drop();
     
+
+}
+
+public enum ItemSize
+{
+    BigItem, SmallItem, Tool
 }

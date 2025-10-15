@@ -5,10 +5,9 @@ using UnityEngine;
 public class ProductSO : ScriptableObject
 {
     public string Name;
-    public int Amount;
-    public int MaxAmount;
 
     public int Size;
     public GameObject prefab;
     public Sprite image;
+    public float Price;
 }
