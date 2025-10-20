@@ -10,4 +10,5 @@ public class ProductSO : ScriptableObject
     public GameObject prefab;
     public Sprite image;
     public float Price;
+    public float HeighOffset;
 }

@@ -170,33 +170,76 @@ public class ClientScript : MonoBehaviour
     }
 
 
-    //public Vector3? FindProductLocation(ProductSO targetProduct)
+    //public List<Vector3> FindProductLocation()
     //{
-    //    GameObject[] allObjects = FindObjectsOfType<GameObject>();
+    //    //     ProductSO product = MarketData.GetProducts().Find(p => p.name == productName);
+    //    //
+    //    List<Vector3> locations = new List<Vector3>();
 
-    //    foreach (GameObject shelfRoot in allObjects)
+    //    ShelfScript[] allObjects = FindObjectsOfType<ShelfScript>();
+
+    //    foreach (string ProductName in ProductList.Keys)
     //    {
-    //        if (!shelfRoot.name.StartsWith("Shelf")) continue;
 
-    //        foreach (Transform child in shelfRoot.transform)
+    //        ProductSO targetProduct = MarketData.GetProducts().Find(p => p.Name == ProductName);
+    //        foreach (ShelfScript shelfScript in allObjects)
     //        {
-    //            if (!child.name.StartsWith("Shelf")) continue;
-
-    //            ShelfScript shelfScript = child.GetComponent<ShelfScript>();
-
+    //            int Amount = ProductList[ProductName];
     //            if (shelfScript.current_product == targetProduct)
     //            {
-    //                Transform npcPoint = shelfRoot.transform.Find("NPCPoint");
+    //                Transform npcPoint = shelfScript.transform.parent.Find("NPCPoint");
     //                if (npcPoint != null)
     //                {
-    //                    return npcPoint.position;
+    //                    if (shelfScript.GetProductAmount() >= ProductList[ProductName])
+    //                    {
+    //                        ShelfList.Add(shelfScript);
+    //                        locations.Add(npcPoint.position);
+    //                    }
+    //                    else
+    //                    {
+    //                        List<ShelfScript> tempShelfList = new List<ShelfScript>();
+    //                        foreach (ShelfScript shelfScript2 in allObjects)
+    //                        {
+
+    //                            if (shelfScript2.current_product == targetProduct)
+    //                            {
+    //                                tempShelfList.Add(shelfScript2);
+    //                            }
+    //                        }
+
+
+    //                        foreach (ShelfScript tempShelf in tempShelfList)
+    //                        {
+    //                            Amount -= tempShelf.GetProductAmount();
+
+    //                            if (Amount > 0)
+    //                            {
+    //                                ShelfList.Add(tempShelf);
+    //                                locations.Add(tempShelf.transform.parent.Find("NPCPoint").position);
+    //                            }
+    //                            else
+    //                            {
+
+    //                                ShelfList.Add(tempShelf);
+    //                                locations.Add(tempShelf.transform.parent.Find("NPCPoint").position);
+    //                                break;
+    //                            }
+    //                        }
+
+    //                    }
     //                }
+
     //            }
     //        }
+
+
     //    }
+
+    //    if (locations.Count > 0) return locations;
 
     //    return null;
     //}
+
     public List<Vector3> FindProductLocation()
     {
         //     ProductSO product = MarketData.GetProducts().Find(p => p.name == productName);
@@ -205,37 +248,48 @@ public class ClientScript : MonoBehaviour
 
         ShelfScript[] allObjects = FindObjectsOfType<ShelfScript>();
 
+        Dictionary<ProductSO, int> targetProducts = new Dictionary<ProductSO, int>();
         foreach (string ProductName in ProductList.Keys)
         {
-
             ProductSO targetProduct = MarketData.GetProducts().Find(p => p.Name == ProductName);
+
+            targetProducts.Add(targetProduct, ProductList[ProductName]);
+
+        }  
+
+        foreach (var Product in targetProducts)
+
+        {
+            int Amount = Product.Value;
+
             foreach (ShelfScript shelfScript in allObjects)
             {
-                int Amount = ProductList[ProductName];
-                if (shelfScript.current_product == targetProduct)
+                Debug.Log("Checking shelf for product " + Product.Key.Name);
+
+                if (shelfScript.current_product == Product.Key)
                 {
                     Transform npcPoint = shelfScript.transform.parent.Find("NPCPoint");
                     if (npcPoint != null)
                     {
-                        if (shelfScript.GetProductAmount() >= ProductList[ProductName])
+                        if (shelfScript.GetProductAmount() >= Product.Value)
                         {
                             ShelfList.Add(shelfScript);
                             locations.Add(npcPoint.position);
                         }
                         else
                         {
-                            List<ShelfScript> tempShelfList = new List<ShelfScript>();
+                            List<ShelfScript> TargetProductShelfList = new List<ShelfScript>();
                             foreach (ShelfScript shelfScript2 in allObjects)
                             {
 
-                                if (shelfScript2.current_product == targetProduct)
+                                if (shelfScript2.current_product == Product.Key)
                                 {
-                                    tempShelfList.Add(shelfScript2);
+                                    TargetProductShelfList.Add(shelfScript2);
                                 }
                             }
 
 
-                            foreach (ShelfScript tempShelf in tempShelfList)
+                            foreach (ShelfScript tempShelf in TargetProductShelfList)
                             {
                                 Amount -= tempShelf.GetProductAmount();
 
@@ -250,17 +304,24 @@ public class ClientScript : MonoBehaviour
                                     ShelfList.Add(tempShelf);
                                     locations.Add(tempShelf.transform.parent.Find("NPCPoint").position);
                                     break;
-                                }
-                            }
 
+                                }
+
+                            }
                         }
                     }
 
-                }
-            }
 
-            
+                }
+                break;
+
+            }
         }
+
+       
+
+
+        
 
         if (locations.Count > 0) return locations;
 

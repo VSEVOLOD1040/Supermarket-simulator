@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Product
   m_EditorClassIdentifier: 
   Name: A test product???? What is inside???
-  Amount: 23
-  MaxAmount: 50
   Size: 2
-  prefab: {fileID: 6004203589859462821, guid: 11ed89297e2f12842a55ad6b18d0f0b2, type: 3}
+  prefab: {fileID: 6004203589859462821, guid: 2d9a4777d59b32242a082e57a604fd1e, type: 3}
   image: {fileID: 21300000, guid: 0ab2b6216d4d4cb45907377e821f881d, type: 3}
+  Price: 0
+  HeighOffset: -0.1

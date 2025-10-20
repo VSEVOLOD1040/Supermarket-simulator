@@ -20,6 +20,6 @@ public class ProductSlot : MonoBehaviour
     public void SetProduct(ProductSO NewProduct)
     {
         Product = NewProduct;
-        Instantiate(NewProduct.prefab, gameObject.transform.position, Quaternion.identity, transform);
+        Instantiate(NewProduct.prefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + NewProduct.HeighOffset, gameObject.transform.position.z), Quaternion.identity, transform);
     }
 }

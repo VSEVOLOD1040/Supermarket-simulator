@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Bread
   Size: 1
-  prefab: {fileID: 6004203589859462821, guid: 11ed89297e2f12842a55ad6b18d0f0b2, type: 3}
+  prefab: {fileID: 6004203589859462821, guid: bbe57b958729b3c4fa4e65901e4be3d9, type: 3}
   image: {fileID: 0}
+  Price: 0
+  HeighOffset: -0.09
