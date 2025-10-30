@@ -21,4 +21,4 @@ MonoBehaviour:
     batchSize: 15
   - product: {fileID: 11400000, guid: 2750a00ffe07ca74883213a7b278562d, type: 2}
     marketPrice: 60
-    batchSize: 1
+    batchSize: 10

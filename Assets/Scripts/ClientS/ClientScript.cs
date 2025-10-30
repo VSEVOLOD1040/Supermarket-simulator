@@ -1,0 +1,371 @@
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using UnityEngine;
+using UnityEngine.AI;
+
+public class ClientScript : MonoBehaviour
+{
+    public MarketDataSO MarketData;
+    public int MaxProductAmountForOneProductType;
+    public Dictionary<string, int> ProductList;
+    public Transform CashPoint; // Тимчасово
+    public Transform ExitPoint; // неТимчасово
+
+    public List<Vector3> MovementList = new List<Vector3>();
+    public List<ShelfScript> ShelfList = new List<ShelfScript>();
+
+
+    public Dictionary<ProductSO, int> ProductsTaken = new Dictionary<ProductSO, int>();
+
+    public float Distance;
+
+    public int CurrentTargetIndex = 0;
+    public NavMeshAgent agent;
+    // Start is called before the first frame update
+    void Start()
+    {
+        agent = GetComponent<NavMeshAgent>();
+        ExitPoint = GameObject.Find("ExitPoint").transform;
+        CashPoint = GameObject.Find("CashPoint").transform.GetChild(1);
+
+        ProductList = GetRandomProducts(MarketData.GetProducts());
+        //ProductList = GetTestProductList();
+        PrintDictionary(ProductList);
+
+        List<Vector3> locations = FindProductLocation();
+
+        if (locations != null && locations.Count > 0)
+        {
+            MovementList.AddRange(locations);
+        }
+
+        if (MovementList.Count > 0)
+        {
+            MovementList.Add(CashPoint.position);
+
+        }
+        
+
+        MovementList.Add(ExitPoint.position);
+
+        agent.SetDestination(MovementList[CurrentTargetIndex]);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+        Distance = agent.remainingDistance;
+
+
+
+        HandleMovement();
+
+        
+
+    }
+    
+    IEnumerator SetDestination(int Index)
+    {
+        yield return new WaitForSeconds(Random.Range(2,5));
+        agent.SetDestination(MovementList[Index]);
+    }
+
+
+    void AddToProductList(ProductSO product)
+    {
+
+    }
+    void HandleMovement()
+    {
+           
+
+        if (agent.destination != null && agent.remainingDistance < 0.16f && CurrentTargetIndex < MovementList.Count)
+        {
+
+            // Тут потрібно додати перевірку, щоб клієнт не міг взяти більше товару, ніж потрібно 
+            if (CurrentTargetIndex >= 0 && CurrentTargetIndex < ShelfList.Count)
+            {
+                if (ShelfList[CurrentTargetIndex].CheckIfShelfEmpty() == false)
+                {
+                    Debug.Log("Current index " + CurrentTargetIndex);
+
+                    string ProductName = ShelfList[CurrentTargetIndex].current_product.Name;
+                    int AmountNeeded = ProductList[ProductName];
+                    int AmountTaken = 0;
+
+
+                    ProductSO product = ShelfList[CurrentTargetIndex].TakeProduct(AmountNeeded, out AmountTaken);
+
+                    if (product != null)
+                    {
+                        if (ProductsTaken.ContainsKey(product))
+                        {
+                            ProductsTaken[product] += AmountTaken;
+                        }
+                        else ProductsTaken.Add(product, AmountTaken);
+                        
+                        if (AmountNeeded - AmountTaken <= 0)
+                        {
+                            ProductList.Remove(ProductName);
+                        }
+                        else
+                        {
+                            ProductList[ProductName] = AmountNeeded - AmountTaken;
+                        }
+                        Debug.Log("Product taken " + product.Name);
+                    }
+                }
+                else
+                {
+                    MovementList.Clear();
+                    ShelfList.Clear();
+                    CurrentTargetIndex = 0;
+
+                    MovementList = new List<Vector3>();
+                    
+                    List<Vector3> newLocations = FindProductLocation();
+                    if (newLocations != null)
+                    {
+                        MovementList.AddRange(newLocations);
+
+                    }
+
+
+                    MovementList.Add(CashPoint.position);
+
+                    MovementList.Add(ExitPoint.position);
+
+                    agent.SetDestination(MovementList[CurrentTargetIndex]);
+
+                    Debug.Log("Updated movement list. Amount: "+MovementList.Count);
+                    return;
+                }
+
+
+
+
+                //ShelfList.RemoveAt(CurrentTargetIndex);
+            }
+            else if(CurrentTargetIndex == MovementList.Count - 2)
+            {
+                GameObject.Find("Player").GetComponent<PlayerScript>().AddMoney(Pay());
+            }
+            else if (CurrentTargetIndex == MovementList.Count - 1)
+            {
+                Destroy(gameObject);
+            }
+
+            CurrentTargetIndex++;
+            if (CurrentTargetIndex < MovementList.Count)
+            {
+
+                agent.destination = MovementList[CurrentTargetIndex];
+            }
+        }
+    }
+
+    float Pay()
+    {
+        float total = 0f;
+        foreach (var item in ProductsTaken)
+        {
+            total += item.Key.Price * item.Value;
+        }
+        return total;
+    }
+    void PrintDictionary(Dictionary<string, int> dict)
+    {
+        foreach (KeyValuePair<string, int> pair in dict)
+        {
+            Debug.Log($"{pair.Key} : {pair.Value}");
+        }
+    }
+
+    public Dictionary<string, int> GetRandomProducts(List<ProductSO> products)
+    {
+        Dictionary<string, int> result = new Dictionary<string, int>();
+
+        if (products == null || products.Count == 0)
+            return result;
+
+        int countToSelect = Random.Range(2, products.Count + 1);
+        List<ProductSO> tempList = new List<ProductSO>(products);
+        Shuffle(tempList);
+
+        for (int i = 0; i < countToSelect; i++)
+        {
+            ProductSO product = tempList[i];
+            string productName = product.Name;
+
+            int quantity = GetRandomAmount();
+
+            if (!result.ContainsKey(productName))
+                result.Add(productName, quantity);
+        }
+
+        return result;
+    }
+
+    public Dictionary<string, int> GetTestProductList()
+    {
+        Dictionary<string, int> result = new Dictionary<string, int>();
+
+        result.Add("Bread", GetRandomAmount());
+        result.Add("Milk", GetRandomAmount());
+
+        return result;
+    }
+
+    private int GetRandomAmount()
+    {
+        int quantity = 1;
+        float chance = 1f;
+
+        while (quantity < MaxProductAmountForOneProductType)
+        {
+            chance *= 0.5f;
+            if (Random.value < chance)
+                quantity++;
+            else
+                break;
+        }
+
+        return quantity;
+    }
+
+    private void Shuffle<T>(List<T> list)
+    {
+        for (int i = list.Count - 1; i > 0; i--)
+        {
+            int j = Random.Range(0, i + 1);
+            (list[i], list[j]) = (list[j], list[i]);
+        }
+    }
+
+
+    //public List<Vector3> FindProductLocation()
+    //{
+    //    //     ProductSO product = MarketData.GetProducts().Find(p => p.name == productName);
+    //    //
+    //    List<Vector3> locations = new List<Vector3>();
+
+    //    ShelfScript[] allObjects = FindObjectsOfType<ShelfScript>();
+
+    //    foreach (string ProductName in ProductList.Keys)
+    //    {
+
+    //        ProductSO targetProduct = MarketData.GetProducts().Find(p => p.Name == ProductName);
+    //        foreach (ShelfScript shelfScript in allObjects)
+    //        {
+    //            int Amount = ProductList[ProductName];
+    //            if (shelfScript.current_product == targetProduct)
+    //            {
+    //                Transform npcPoint = shelfScript.transform.parent.Find("NPCPoint");
+    //                if (npcPoint != null)
+    //                {
+    //                    if (shelfScript.GetProductAmount() >= ProductList[ProductName])
+    //                    {
+    //                        ShelfList.Add(shelfScript);
+    //                        locations.Add(npcPoint.position);
+    //                    }
+    //                    else
+    //                    {
+    //                        List<ShelfScript> tempShelfList = new List<ShelfScript>();
+    //                        foreach (ShelfScript shelfScript2 in allObjects)
+    //                        {
+
+    //                            if (shelfScript2.current_product == targetProduct)
+    //                            {
+    //                                tempShelfList.Add(shelfScript2);
+    //                            }
+    //                        }
+
+
+    //                        foreach (ShelfScript tempShelf in tempShelfList)
+    //                        {
+    //                            Amount -= tempShelf.GetProductAmount();
+
+    //                            if (Amount > 0)
+    //                            {
+    //                                ShelfList.Add(tempShelf);
+    //                                locations.Add(tempShelf.transform.parent.Find("NPCPoint").position);
+    //                            }
+    //                            else
+    //                            {
+
+    //                                ShelfList.Add(tempShelf);
+    //                                locations.Add(tempShelf.transform.parent.Find("NPCPoint").position);
+    //                                break;
+    //                            }
+    //                        }
+
+    //                    }
+    //                }
+
+    //            }
+    //        }
+
+
+    //    }
+
+    //    if (locations.Count > 0) return locations;
+
+    //    return null;
+    //}
+
+    public List<Vector3> FindProductLocation()
+    {
+        List<Vector3> locations = new List<Vector3>();
+        ShelfScript[] allShelves = FindObjectsOfType<ShelfScript>();
+
+        Dictionary<ProductSO, int> targetProducts = new Dictionary<ProductSO, int>();
+        foreach (string productName in ProductList.Keys)
+        {
+            ProductSO targetProduct = MarketData.GetProducts().Find(p => p.Name == productName);
+            if (targetProduct != null)
+                targetProducts.Add(targetProduct, ProductList[productName]);
+        }
+
+        foreach (var productEntry in targetProducts)
+        {
+            ProductSO product = productEntry.Key; // Продукт котрий потрібен
+            int amountNeeded = productEntry.Value; // Кількість яка потрібна
+            List<ShelfScript> productShelves = new List<ShelfScript>();
+
+            foreach (var productShelf in allShelves)
+            {
+                if (productShelf.current_product == product)
+                {
+                    productShelves.Add(productShelf);
+                }
+            }
+
+            productShelves.OrderByDescending(s => s.GetProductAmount());
+
+            foreach (ShelfScript shelf in productShelves)
+            {
+                int shelfAmount = shelf.GetProductAmount();
+
+                if (shelfAmount <= 0)
+                    continue;
+
+                ShelfList.Add(shelf);
+                Transform npcPoint = shelf.transform.parent.Find("NPCPoint");
+                if (npcPoint != null)
+                    locations.Add(npcPoint.position);
+
+                amountNeeded -= shelfAmount;
+                if (amountNeeded <= 0)
+                    break;
+            }
+        }
+
+        return locations.Count > 0 ? locations : null;
+    }
+
+       
+}
+    

@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
             SaveData();
         }
     }
-    public void UpdateBalance(int balance)
+    public void UpdateBalance(float balance)
     {
         gameData.Balance = balance;
     }

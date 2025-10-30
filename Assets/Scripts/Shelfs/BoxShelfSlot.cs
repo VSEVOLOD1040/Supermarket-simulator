@@ -1,0 +1,57 @@
+using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
+using UnityEngine;
+
+
+public class BoxShelfSlot : MonoBehaviour, IInteractable
+{
+
+    public GameObject Box;
+    public void Interact(GameObject interactor = null)
+    {
+        print(interactor);
+        if (interactor != null)
+        {
+            GameObject item = interactor.GetComponent<PlayerScript>().CurrentItem;
+            print(item);
+            if (item == null)
+            {
+               
+                if (Box != null)
+                {
+
+                    Box.GetComponent<Rigidbody>().isKinematic = false;
+                    Box.GetComponent<BoxCollider>().enabled = true;
+                    BoxScript box_script = Box.GetComponent<BoxScript>();
+                    box_script.PickUp();
+                    Box = null;
+                }
+
+            }
+            else if (item.TryGetComponent<BoxScript>(out BoxScript box_script))
+            {
+                if (Box == null)
+                {
+                    box_script.Drop();
+
+                    box_script.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+                    box_script.gameObject.GetComponent<BoxCollider>().enabled = false;
+                    box_script.transform.position = gameObject.transform.position;
+                    box_script.transform.rotation = gameObject.transform.rotation;
+
+                    box_script.transform.SetParent(gameObject.transform);
+                    Box = box_script.gameObject;
+                    interactor.GetComponent<PlayerScript>().CurrentItem = null;
+                }
+                
+
+            }
+
+
+
+
+        }
+        
+    }
+}
