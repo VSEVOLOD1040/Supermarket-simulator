@@ -14,6 +14,8 @@ public class PlayerScript : MonoBehaviour
     public GameManager gameManager;
     public float Money;
     public static bool RaycastAllowed;
+
+    public int UpgradePoints;
     public void AddMoney(float money)
     {
         Money += money;

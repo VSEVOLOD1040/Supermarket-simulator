@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.GlobalIllumination;
 
 public class GameManager : MonoBehaviour
 {
     public PlayerScript player;
     public SaveManager saveManager;
     public GameData gameData;
+
+    public float CurrentTime;
 
     private void Start()
     {
@@ -44,5 +47,20 @@ public class GameManager : MonoBehaviour
 
         }
 
+    }
+
+    public void OpenShop()
+    {
+        print("Shop Opened");
+        StartCoroutine("HandleTime");
+    }
+    IEnumerator HandleTime()
+    {
+        print("TME STARTED");
+        while (true)
+        {
+            CurrentTime += 1;
+            yield return new WaitForSeconds(1);
+        }
     }
 }

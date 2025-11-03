@@ -10,8 +10,8 @@ public class ClientScript : MonoBehaviour
     public MarketDataSO MarketData;
     public int MaxProductAmountForOneProductType;
     public Dictionary<string, int> ProductList;
-    public Transform CashPoint; // “имчасово
-    public Transform ExitPoint; // не“имчасово
+    public Transform CashPoints; // “имчасово
+    public Transform ExitPoint; // Ќе‘актўоне“имчасово
 
     public List<Vector3> MovementList = new List<Vector3>();
     public List<ShelfScript> ShelfList = new List<ShelfScript>();
@@ -28,7 +28,7 @@ public class ClientScript : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         ExitPoint = GameObject.Find("ExitPoint").transform;
-        CashPoint = GameObject.Find("CashPoint").transform.GetChild(1);
+        CashPoints = GameObject.Find("CASH_POINTS").transform;
 
         ProductList = GetRandomProducts(MarketData.GetProducts());
         //ProductList = GetTestProductList();
@@ -43,10 +43,11 @@ public class ClientScript : MonoBehaviour
 
         if (MovementList.Count > 0)
         {
-            MovementList.Add(CashPoint.position);
+            MovementList.Add(CashPoints.transform.GetChild(Random.Range(0, CashPoints.childCount - 1)).GetChild(1).transform.position);
+
 
         }
-        
+
 
         MovementList.Add(ExitPoint.position);
 
@@ -134,7 +135,8 @@ public class ClientScript : MonoBehaviour
                     }
 
 
-                    MovementList.Add(CashPoint.position);
+                    MovementList.Add(CashPoints.transform.GetChild(Random.Range(0, CashPoints.childCount - 1)).GetChild(1).transform.position);
+
 
                     MovementList.Add(ExitPoint.position);
 
@@ -166,6 +168,8 @@ public class ClientScript : MonoBehaviour
             }
         }
     }
+
+    
 
     float Pay()
     {
