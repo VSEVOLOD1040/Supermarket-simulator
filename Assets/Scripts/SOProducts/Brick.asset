@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccd87c44e0d9e434baaaf535c8c0c38b, type: 3}
+  m_Name: Brick
+  m_EditorClassIdentifier: 
+  Name: Brick
+  Size: 2
+  prefab: {fileID: 4070979047441082109, guid: 78b10f564be23874fb47876173577543, type: 3}
+  image: {fileID: 21300000, guid: 4671dadf17fc6aa45b61955aa2f2f383, type: 3}
+  Price: 0
+  HeighOffset: -0.1

@@ -31,6 +31,7 @@ public class ClientSpawner : MonoBehaviour
 
     IEnumerator SpawnClient()
     {
+
         print("Client Spawner Started");
         while (true)
         {

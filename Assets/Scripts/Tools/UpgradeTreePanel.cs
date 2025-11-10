@@ -18,14 +18,14 @@ public class UpgradeTreePanel : MonoBehaviour
         
     }
 
-    private void OnMouseEnter()
-    {
-        Cursor.lockState = CursorLockMode.Confined;
-        Cursor.visible = true;
-    }
-    private void OnMouseExit()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-    }
+    //private void OnMouseEnter()
+    //{
+    //    Cursor.lockState = CursorLockMode.Confined;
+    //    Cursor.visible = true;
+    //}
+    //private void OnMouseExit()
+    //{
+    //    Cursor.lockState = CursorLockMode.Locked;
+    //    Cursor.visible = false;
+    //}
 }

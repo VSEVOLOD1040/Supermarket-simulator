@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class UpgradeNode : MonoBehaviour
@@ -10,6 +11,9 @@ public class UpgradeNode : MonoBehaviour
     public List<UpgradeNode> RequiredNodes = new List<UpgradeNode>();
 
     public int UpgradeCost = 1;
+    
+    public UnityEvent OnUpgrade;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +29,6 @@ public class UpgradeNode : MonoBehaviour
 
     public void Open()
     {
-        Debug.Log("Open()");
         if (Player.UpgradePoints - UpgradeCost >= 0)
         {
             
@@ -43,6 +46,10 @@ public class UpgradeNode : MonoBehaviour
         {
             return;
         }
+
+
+
+        OnUpgrade?.Invoke();
 
         Player.UpgradePoints -= UpgradeCost;
         IsEnabled = true;

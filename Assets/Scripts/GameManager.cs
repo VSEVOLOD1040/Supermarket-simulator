@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
 
     public float CurrentTime;
 
+    bool isShopOpen = false;
     private void Start()
     {
         LoadData();
@@ -25,6 +26,11 @@ public class GameManager : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.S))
         {
             SaveData();
+        }
+
+        if (isShopOpen)
+        {
+            CurrentTime += Time.deltaTime;
         }
     }
     public void UpdateBalance(float balance)
@@ -51,16 +57,7 @@ public class GameManager : MonoBehaviour
 
     public void OpenShop()
     {
-        print("Shop Opened");
-        StartCoroutine("HandleTime");
+        isShopOpen = true;
     }
-    IEnumerator HandleTime()
-    {
-        print("TME STARTED");
-        while (true)
-        {
-            CurrentTime += 1;
-            yield return new WaitForSeconds(1);
-        }
-    }
+
 }

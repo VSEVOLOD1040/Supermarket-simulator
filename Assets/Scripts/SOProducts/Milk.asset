@@ -16,5 +16,5 @@ MonoBehaviour:
   Size: 0
   prefab: {fileID: 1762604194264139845, guid: 2d80447eaf967d94c86ffe0578b5cedc, type: 3}
   image: {fileID: 21300000, guid: 6a78b4d5672c9434fbf7475a09b1a960, type: 3}
-  Price: 24.8
+  Price: 0
   HeighOffset: 0.03

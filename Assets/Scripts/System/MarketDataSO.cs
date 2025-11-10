@@ -10,6 +10,8 @@ public class MarketDataSO : ScriptableObject
         public ProductSO product;
         public int marketPrice;
         public int batchSize;
+
+        public bool IsEnabled;
     }
 
     public MarketEntry[] entries;
@@ -46,9 +48,23 @@ public class MarketDataSO : ScriptableObject
         List<ProductSO> products = new List<ProductSO>();
         foreach (var entry in entries)
         {
-            if (entry.product != null)
+            if (entry.product != null && entry.IsEnabled)
                 products.Add(entry.product);
         }
         return products;
+    }
+    public void EnableProduct(string productName)
+    {
+        for (int i = 0; i < entries.Length; i++)
+        {
+            if (entries[i].product != null && entries[i].product.Name == productName)
+            {
+                MarketEntry updatedEntry = entries[i];
+                updatedEntry.IsEnabled = true;
+                entries[i] = updatedEntry;
+                entryLookup[entries[i].product] = updatedEntry;
+                break;
+            }
+        }
     }
 }

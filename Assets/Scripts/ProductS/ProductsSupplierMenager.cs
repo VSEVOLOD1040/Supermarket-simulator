@@ -78,6 +78,11 @@ public class ProductsSupplierMenager : MonoBehaviour
             GameObject box = Instantiate(box_prefab, position_where_this_script_must_spawn_a_box.position, Quaternion.identity);
             BoxScript boxScript = box.GetComponent<BoxScript>();
             boxScript.Init(product, marketData.GetBatchSize(product));
+
+            if (product.Price == 0)
+            {
+                product.Price = marketData.GetPrice(product) / marketData.GetBatchSize(product);
+            }
         }
         
     }

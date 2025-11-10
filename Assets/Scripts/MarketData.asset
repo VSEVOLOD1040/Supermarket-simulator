@@ -16,9 +16,24 @@ MonoBehaviour:
   - product: {fileID: 11400000, guid: 44d257e457f49194fbc42045b9486e9e, type: 2}
     marketPrice: 50
     batchSize: 20
+    IsEnabled: 1
   - product: {fileID: 11400000, guid: ad91f1ff89cb0514d91265cd356fe439, type: 2}
     marketPrice: 40
     batchSize: 15
+    IsEnabled: 1
   - product: {fileID: 11400000, guid: 2750a00ffe07ca74883213a7b278562d, type: 2}
     marketPrice: 60
     batchSize: 10
+    IsEnabled: 1
+  - product: {fileID: 11400000, guid: f2be6aa2e92c19f468fe9126c7022473, type: 2}
+    marketPrice: 80
+    batchSize: 12
+    IsEnabled: 1
+  - product: {fileID: 11400000, guid: db1c258871861564b8a3b45116acb13c, type: 2}
+    marketPrice: 100
+    batchSize: 15
+    IsEnabled: 1
+  - product: {fileID: 11400000, guid: d160a229bf02d744da2c9539dadfd538, type: 2}
+    marketPrice: 40
+    batchSize: 15
+    IsEnabled: 1

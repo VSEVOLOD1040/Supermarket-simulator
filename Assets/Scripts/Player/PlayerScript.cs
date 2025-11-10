@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -19,6 +20,8 @@ public class PlayerScript : MonoBehaviour
     public void AddMoney(float money)
     {
         Money += money;
+        Money = (float)Math.Round(Money, 2);
+
         gameManager.UpdateBalance(Money);
 
         UpdateUI();
@@ -28,6 +31,7 @@ public class PlayerScript : MonoBehaviour
         if (Money - money >= 0)
         {
             Money -= money;
+            Money = (float)Math.Round(Money, 2);
             UpdateUI();
             gameManager.UpdateBalance(Money);
 
@@ -39,6 +43,7 @@ public class PlayerScript : MonoBehaviour
         }
 
     }
+
 
 
     private void Start()
