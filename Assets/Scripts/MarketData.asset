@@ -24,7 +24,7 @@ MonoBehaviour:
   - product: {fileID: 11400000, guid: 2750a00ffe07ca74883213a7b278562d, type: 2}
     marketPrice: 60
     batchSize: 10
-    IsEnabled: 1
+    IsEnabled: 0
   - product: {fileID: 11400000, guid: f2be6aa2e92c19f468fe9126c7022473, type: 2}
     marketPrice: 80
     batchSize: 12

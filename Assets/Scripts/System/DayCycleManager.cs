@@ -19,7 +19,7 @@ public class DayCycleManager : MonoBehaviour
         timeInSeconds = gameObject.GetComponent<GameManager>().CurrentTime;
 
 
-        float clampedTime = Mathf.Clamp(timeInSeconds, 0f, 60f);
+        float clampedTime = Mathf.Clamp(timeInSeconds, 0f, MaxSecondsInDay);
         float t = clampedTime / MaxSecondsInDay;
         Vector3 currentRotation = Vector3.Lerp(sunriseRotation, sunsetRotation, t);
         if (directionalLight != null)
