@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Unity.AI.Navigation;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -24,6 +25,50 @@ public class ClientScript : MonoBehaviour
     public int CurrentTargetIndex = 0;
     public NavMeshAgent agent;
     // Start is called before the first frame update
+
+    public bool WillClientBuy(float marketPrice, float currentPrice)
+    {
+        float chance;
+
+        if (currentPrice <= marketPrice)
+        {
+            chance = 100f;
+        }
+        else if (currentPrice >= marketPrice * 3f)
+        {
+            chance = 0f;
+        }
+        else if (currentPrice >= marketPrice * 2f)
+        {
+            chance = 90f;
+        }
+        else
+        {
+            float t = (currentPrice - marketPrice) / marketPrice;
+            chance = Mathf.Lerp(100f, 90f, t);
+        }
+
+        float rnd= Random.Range(0f, 100f);
+        return rnd<= chance;
+    }
+    void AddCashPoint()
+    {
+        List<GameObject> activeObjects = new List<GameObject>();
+
+        foreach (NavMeshModifier child in CashPoints.transform.GetComponentsInChildren<NavMeshModifier>())
+        {
+            if (child.gameObject.activeSelf)
+            {
+                activeObjects.Add(child.gameObject);
+            }
+        }
+
+
+        GameObject cash = activeObjects[Random.Range(0, activeObjects.Count - 1)].gameObject;
+
+        MovementList.Add(cash.transform.GetChild(1).transform.position);
+    }
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -43,9 +88,8 @@ public class ClientScript : MonoBehaviour
 
         if (MovementList.Count > 0)
         {
-            MovementList.Add(CashPoints.transform.GetChild(Random.Range(0, CashPoints.childCount - 1)).GetChild(1).transform.position);
 
-
+            AddCashPoint();
         }
 
 
@@ -97,27 +141,31 @@ public class ClientScript : MonoBehaviour
                     int AmountNeeded = ProductList[ProductName];
                     int AmountTaken = 0;
 
-
-                    ProductSO product = ShelfList[CurrentTargetIndex].TakeProduct(AmountNeeded, out AmountTaken);
-
-                    if (product != null)
+                    if (WillClientBuy(MarketData.GetPrice(ShelfList[CurrentTargetIndex].current_product)/ MarketData.GetBatchSize(ShelfList[CurrentTargetIndex].current_product), ShelfList[CurrentTargetIndex].current_product.Price))
                     {
-                        if (ProductsTaken.ContainsKey(product))
+                        print("Client decided to buy " + ProductName);
+                        ProductSO product = ShelfList[CurrentTargetIndex].TakeProduct(AmountNeeded, out AmountTaken);
+
+                        if (product != null)
                         {
-                            ProductsTaken[product] += AmountTaken;
+
+                            if (ProductsTaken.ContainsKey(product))
+                            {
+                                ProductsTaken[product] += AmountTaken;
+                            }
+                            else ProductsTaken.Add(product, AmountTaken);
+
+                            if (AmountNeeded - AmountTaken <= 0)
+                            {
+                                ProductList.Remove(ProductName);
+                            }
+                            else
+                            {
+                                ProductList[ProductName] = AmountNeeded - AmountTaken;
+                            }
                         }
-                        else ProductsTaken.Add(product, AmountTaken);
-                        
-                        if (AmountNeeded - AmountTaken <= 0)
-                        {
-                            ProductList.Remove(ProductName);
-                        }
-                        else
-                        {
-                            ProductList[ProductName] = AmountNeeded - AmountTaken;
-                        }
-                        Debug.Log("Product taken " + product.Name);
                     }
+                    
                 }
                 else
                 {
@@ -135,7 +183,7 @@ public class ClientScript : MonoBehaviour
                     }
 
 
-                    MovementList.Add(CashPoints.transform.GetChild(Random.Range(0, CashPoints.childCount - 1)).GetChild(1).transform.position);
+                    AddCashPoint();
 
 
                     MovementList.Add(ExitPoint.position);
