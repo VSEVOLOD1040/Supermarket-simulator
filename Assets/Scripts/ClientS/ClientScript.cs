@@ -58,13 +58,14 @@ public class ClientScript : MonoBehaviour
         foreach (NavMeshModifier child in CashPoints.transform.GetComponentsInChildren<NavMeshModifier>())
         {
             if (child.gameObject.activeSelf)
-            {
+            {   
                 activeObjects.Add(child.gameObject);
             }
         }
 
+        Debug.Log("Active cash point: " + activeObjects.Count);
 
-        GameObject cash = activeObjects[Random.Range(0, activeObjects.Count - 1)].gameObject;
+        GameObject cash = activeObjects[Random.Range(0, activeObjects.Count)];
 
         MovementList.Add(cash.transform.GetChild(1).transform.position);
     }
