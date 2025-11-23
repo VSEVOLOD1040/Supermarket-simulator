@@ -26,14 +26,14 @@ public class TimeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (isShopOpen)
-        //{
+        if (isShopOpen)
+        {
             CurrentTime += Time.deltaTime*(TimeSpeed/60);
-        //}
+        }
 
         if (CurrentTime >= StartWorkTime && isShopOpen == false)
         {
-            StartWorkDay();
+            StartWorkDay()  ;
         }
         if (CurrentTime >= EndWorkTime && isShopOpen == true)
         {

@@ -37,3 +37,15 @@ MonoBehaviour:
     marketPrice: 40
     batchSize: 15
     IsEnabled: 1
+  - product: {fileID: 11400000, guid: b333a4f9641cdf548aba0d4094900d46, type: 2}
+    marketPrice: 45
+    batchSize: 12
+    IsEnabled: 1
+  - product: {fileID: 11400000, guid: a882c1ef8b3b233419574c886e67b7a9, type: 2}
+    marketPrice: 60
+    batchSize: 12
+    IsEnabled: 1
+  - product: {fileID: 11400000, guid: 8e4a02cc0fa9df14588a71373a45405d, type: 2}
+    marketPrice: 80
+    batchSize: 8
+    IsEnabled: 1
