@@ -3,18 +3,29 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.UIElements;
 
-public class PlayerScript : MonoBehaviour
+public class PlayerScript : MonoBehaviour, ISaveble
 {
     public GameObject CurrentItem;
     public GameObject BixItemPositionGameObject;
     public GameObject SmallItemPositionGameObject;
     public GameObject ToolPosition;
+    
     public TextMeshProUGUI UImoneytext;
+    public TextMeshProUGUI UIlevel;
+    public TextMeshProUGUI UIupgradePoints;
+
+    public int CurrentLevel;
+
     public GameManager gameManager;
     public float Money;
     public static bool RaycastAllowed;
+
+    public Action<float> OnMoneyChanged;
+
+    public GameData gameData;
 
     public int UpgradePoints;
     public void AddMoney(float money)
@@ -22,8 +33,8 @@ public class PlayerScript : MonoBehaviour
         Money += money;
         Money = (float)Math.Round(Money, 2);
 
-        gameManager.UpdateBalance(Money);
-
+        UpdateBalance(Money);
+        OnMoneyChanged?.Invoke(money);
         UpdateUI();
     }
     public bool RemoveMoney(float money)
@@ -33,7 +44,7 @@ public class PlayerScript : MonoBehaviour
             Money -= money;
             Money = (float)Math.Round(Money, 2);
             UpdateUI();
-            gameManager.UpdateBalance(Money);
+            UpdateBalance(Money);
 
             return true;
         }
@@ -149,5 +160,34 @@ public class PlayerScript : MonoBehaviour
     public void UpdateUI()
     {
         UImoneytext.text = $"Money: {Money}";
+        UIlevel.text = $"Level: {CurrentLevel}";
+        UIupgradePoints.text = $"Upgrade Points: {UpgradePoints}";
+    }
+
+    public object SaveData()
+    {
+        return gameData;
+    }
+    public void UpdateBalance(float balance)
+    {
+        gameData.Balance = balance;
+    }
+    public void LoadData(object Data)
+    {
+        GameData loadedData = (GameData)Data;
+
+        if (loadedData != null)
+        {
+            gameData = loadedData;
+            Money = loadedData.Balance;
+            UpgradePoints = loadedData.UpgradePoints;
+            UpdateUI();
+        }
+        else
+        {
+            gameData = new GameData(500,1);
+
+        }
+
     }
 }

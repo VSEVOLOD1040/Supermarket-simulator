@@ -13,23 +13,37 @@ public class SaveManager : MonoBehaviour
         filePath = Application.persistentDataPath + "/Save.json";
     }
 
-    public void Save(GameData gameData)
+    public void Save()
     {
-        string json = JsonUtility.ToJson(gameData);
-        File.WriteAllText(filePath, json);
-        Debug.Log("Saved: " + filePath);
-    }
+        Dictionary<string, object> saveData = new Dictionary<string, object>();
+        ISaveble[] saveableObjects = GameObject.FindObjectsOfType<MonoBehaviour>(true) as ISaveble[];
 
-    public GameData Load()
-    {
-        if (File.Exists(filePath))
+        foreach (ISaveble saveable in saveableObjects)
         {
-            string json = File.ReadAllText(filePath);
-            GameData data = JsonUtility.FromJson<GameData>(json);
-            return data;
+            //string key = saveable.GetType().ToString() + "_" + saveable.GetHashCode();
+            
+            saveData[saveable.GetType().FullName] = saveable.SaveData();
+            Debug.Log(saveable.GetType().FullName);
         }
 
-        return null;
+        string json = JsonUtility.ToJson(saveData);
+    }
+
+    public void Load()
+    {
+        Dictionary<string, object> saveData = new Dictionary<string, object>();
+        saveData = JsonUtility.FromJson<Dictionary<string, object>>(File.ReadAllText(filePath));
+
+        ISaveble[] saveableObjects = GameObject.FindObjectsOfType<MonoBehaviour>(true) as ISaveble[];
+
+        foreach (ISaveble saveable in saveableObjects)
+        {
+            string key = saveable.GetType().FullName;
+            if (saveData.ContainsKey(key))
+            {
+                saveable.LoadData(saveData[key]);
+            }
+        }
     }
 
 }

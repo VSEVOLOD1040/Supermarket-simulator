@@ -5,9 +5,12 @@ using System.Collections.Generic;
 public class GameData
 {
     public float Balance;
-
-    public GameData(float balance)
+    public int UpgradePoints;
+    public GameData(float balance, int UpgradePoints)
     {
         Balance = balance;
+        this.UpgradePoints = UpgradePoints;
     }
+
+    
 }

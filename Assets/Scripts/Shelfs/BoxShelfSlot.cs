@@ -4,7 +4,7 @@ using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 
-public class BoxShelfSlot : MonoBehaviour, IInteractable
+public class BoxShelfSlot : MonoBehaviour, IInteractable, ISaveble
 {
 
     public GameObject Box;
@@ -35,13 +35,7 @@ public class BoxShelfSlot : MonoBehaviour, IInteractable
                 {
                     box_script.Drop();
 
-                    box_script.gameObject.GetComponent<Rigidbody>().isKinematic = true;
-                    box_script.gameObject.GetComponent<BoxCollider>().enabled = false;
-                    box_script.transform.position = gameObject.transform.position;
-                    box_script.transform.rotation = gameObject.transform.rotation;
-
-                    box_script.transform.SetParent(gameObject.transform);
-                    Box = box_script.gameObject;
+                    Setbox(item);
                     interactor.GetComponent<PlayerScript>().CurrentItem = null;
                 }
                 
@@ -53,5 +47,40 @@ public class BoxShelfSlot : MonoBehaviour, IInteractable
 
         }
         
+    }
+
+    public void Setbox(GameObject box)
+    {
+        BoxScript box_script = box.GetComponent<BoxScript>();
+
+        box_script.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+        box_script.gameObject.GetComponent<BoxCollider>().enabled = false;
+        box_script.transform.position = gameObject.transform.position;
+        box_script.transform.rotation = gameObject.transform.rotation;
+
+        box_script.transform.SetParent(gameObject.transform);
+        Box = box_script.gameObject;
+    }
+    public object SaveData()
+    {
+        if (Box != null)
+        {
+            return new ShelfData(Box.GetComponent<BoxScript>().product, Box.GetComponent<BoxScript>().Amount);
+
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+    public void LoadData(object data)
+    {
+        ShelfData loaded_data = (ShelfData)data;
+        
+        GameObject box = Instantiate(Resources.Load<GameObject>("Prefabs/Box"));
+        box.GetComponent<BoxScript>().Init(loaded_data.Product, loaded_data.Amount);
+        Setbox(box);
+
     }
 }

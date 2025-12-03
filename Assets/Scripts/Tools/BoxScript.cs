@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class BoxScript : MonoBehaviour, IPickableObject, IInteractable
 {
+
+    public MarketDataSO marketData;
     public PlayerScript player;
     public ProductSO product;
 
@@ -43,7 +45,7 @@ public class BoxScript : MonoBehaviour, IPickableObject, IInteractable
     {
         this.product = product;
         Amount = amount;
-        MaxAmount= amount; //можливо переробити цю логіку
+        MaxAmount= marketData.GetBatchSize(product); //можливо переробити цю логіку
         box_text.text = product.Name;
         box_image.sprite = product.image;
 

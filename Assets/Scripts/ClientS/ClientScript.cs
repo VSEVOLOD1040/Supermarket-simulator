@@ -139,7 +139,7 @@ public class ClientScript : MonoBehaviour
                     Debug.Log("Current index " + CurrentTargetIndex);
 
                     string ProductName = ShelfList[CurrentTargetIndex].current_product.Name;
-                    int AmountNeeded = ProductList[ProductName];
+                    int AmountNeeded = ProductList[ProductName]; //тут була помилка
                     int AmountTaken = 0;
 
                     if (WillClientBuy(MarketData.GetPrice(ShelfList[CurrentTargetIndex].current_product)/ MarketData.GetBatchSize(ShelfList[CurrentTargetIndex].current_product), ShelfList[CurrentTargetIndex].current_product.Price))

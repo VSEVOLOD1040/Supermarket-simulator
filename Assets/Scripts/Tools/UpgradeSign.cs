@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class UpgradeSign : MonoBehaviour, IInteractable
+public class UpgradeSign : MonoBehaviour, IInteractable, ISaveble
 {
 
     public GameObject ObjectToActivate;
@@ -13,6 +13,7 @@ public class UpgradeSign : MonoBehaviour, IInteractable
     public TextMeshProUGUI text_Name;
     public TextMeshProUGUI text_Price;
 
+    public bool IsActivated = false;
 
     public float Price;
     public string Name;
@@ -20,11 +21,16 @@ public class UpgradeSign : MonoBehaviour, IInteractable
     {
         if (player.RemoveMoney(Price))
         {
-            ObjectToActivate.SetActive(true);
-            gameObject.SetActive(false);
+            Activate();
         }
     }
 
+    public void Activate()
+    {
+        ObjectToActivate.SetActive(true);
+        gameObject.SetActive(false);
+        IsActivated = true;
+    }
     public void Init()
     {
         text_Name.text = Name;
@@ -42,5 +48,20 @@ public class UpgradeSign : MonoBehaviour, IInteractable
     void Update()
     {
         
+    }
+
+    public object SaveData()
+    {
+        return IsActivated;
+    }
+
+    public void LoadData(object data)
+    {
+        if ((bool)data == true)
+        {
+            Activate();
+
+
+        }
     }
 }

@@ -53,7 +53,7 @@ public class UpgradeNode : MonoBehaviour
 
         Player.UpgradePoints -= UpgradeCost;
         IsEnabled = true;
-
+        Player.UpdateUI();
         gameObject.GetComponent<Image>().color = Color.green;   
     }
 }

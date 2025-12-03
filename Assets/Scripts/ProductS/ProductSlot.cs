@@ -17,16 +17,13 @@ public class ProductSlot : MonoBehaviour
         
     }
 
+
     public void SetProduct(ProductSO NewProduct)
     {
         Product = NewProduct;
-        GameObject product = Instantiate(NewProduct.prefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + NewProduct.HeighOffset, gameObject.transform.position.z), NewProduct.prefab.transform.rotation);
-
-        //Quaternion.Euler(NewProduct.prefab.transform.rotation.x, gameObject.transform.localRotation.x, NewProduct.prefab.transform.rotation.z)
-
-        //product.transform.rotation = Quaternion.Euler(product.transform.rotation.x, gameObject.transform.rotation.y, product.transform.rotation.z);
-
-        product.transform.SetParent(gameObject.transform);
-
+        GameObject product = Instantiate(NewProduct.prefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + NewProduct.HeighOffset, gameObject.transform.position.z), Quaternion.identity);
+        product.transform.SetParent(gameObject.transform, false);
+        product.transform.localRotation = Quaternion.identity;
+        product.transform.localPosition = Vector3.zero + new Vector3(0, NewProduct.HeighOffset, 0);
     }
 }

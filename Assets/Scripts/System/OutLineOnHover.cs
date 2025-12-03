@@ -7,7 +7,9 @@ public class OutlineOnHover : MonoBehaviour
 
     void Start()
     {
-        outline = GetComponent<Outline>();
+        
+        if (outline == null) outline = GetComponent<Outline>();
+
         if (outline != null)
             outline.enabled = false;
     }

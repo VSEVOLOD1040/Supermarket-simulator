@@ -1,4 +1,5 @@
 using JetBrains.Annotations;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -6,7 +7,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ShelfScript : MonoBehaviour, IInteractable
+public class ShelfScript : MonoBehaviour, IInteractable, ISaveble
 {
     public ShelfUI shelfUI;
     public Button SetPriceButton;
@@ -168,5 +169,33 @@ public class ShelfScript : MonoBehaviour, IInteractable
     void Update()
     {
         
+    }
+
+    public object SaveData()
+    {
+        return new ShelfData(current_product, GetProductAmount());
+    }
+
+    public void LoadData(object data)
+    {
+        ShelfData loaded_data = (ShelfData)data;
+        for (int i = 0; i < loaded_data.Amount; i++)
+        {
+            slots[i].GetComponent<ProductSlot>().SetProduct(loaded_data.Product);
+        }
+    }
+
+    
+}
+[Serializable]
+public class ShelfData
+{
+    public ProductSO Product;
+    public int Amount;
+
+    public ShelfData(ProductSO product, int amount)
+    {
+        Product = product;
+        Amount = amount;
     }
 }

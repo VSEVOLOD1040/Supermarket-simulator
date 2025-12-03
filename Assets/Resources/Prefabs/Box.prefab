@@ -193,6 +193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c3f56c690076f349aa059d7dd419028, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  marketData: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
   player: {fileID: 0}
   product: {fileID: 0}
   box_image: {fileID: 1050965920659639581}
