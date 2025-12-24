@@ -45,7 +45,7 @@ public class BoxScript : MonoBehaviour, IPickableObject, IInteractable
     {
         this.product = product;
         Amount = amount;
-        MaxAmount= marketData.GetBatchSize(product); //можливо переробити цю логіку
+        MaxAmount= marketData.GetBatchSize(product);
         box_text.text = product.Name;
         box_image.sprite = product.image;
 

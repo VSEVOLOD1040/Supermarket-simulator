@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Playables;
 
@@ -8,42 +9,107 @@ public class SaveManager : MonoBehaviour
 {
     public string filePath;
 
+
     private void Start()
     {
         filePath = Application.persistentDataPath + "/Save.json";
+
+        Debug.Log(Application.persistentDataPath);
+
     }
 
     public void Save()
     {
         Dictionary<string, object> saveData = new Dictionary<string, object>();
-        ISaveble[] saveableObjects = GameObject.FindObjectsOfType<MonoBehaviour>(true) as ISaveble[];
-
-        foreach (ISaveble saveable in saveableObjects)
+        MonoBehaviour[] saveableObjects = GameObject.FindObjectsOfType<MonoBehaviour>(true);
+        Debug.Log(saveableObjects.Length);
+        foreach (var saveable in saveableObjects)
         {
-            //string key = saveable.GetType().ToString() + "_" + saveable.GetHashCode();
+            if (saveable is ISaveble saveObj)
+            {
+
+                saveData[saveable.name] = saveObj.SaveData();
+                Debug.Log(saveable.name);
+            }
+
             
-            saveData[saveable.GetType().FullName] = saveable.SaveData();
-            Debug.Log(saveable.GetType().FullName);
         }
 
-        string json = JsonUtility.ToJson(saveData);
+
+
+        string json = JsonUtility.ToJson(new SerializationWrapper(saveData));
+        File.WriteAllText(filePath, json);
     }
 
     public void Load()
     {
         Dictionary<string, object> saveData = new Dictionary<string, object>();
-        saveData = JsonUtility.FromJson<Dictionary<string, object>>(File.ReadAllText(filePath));
+        
+        string json = File.ReadAllText(filePath);
+        saveData = JsonUtility.FromJson<SerializationWrapper>(json).ToDictionary();
 
-        ISaveble[] saveableObjects = GameObject.FindObjectsOfType<MonoBehaviour>(true) as ISaveble[];
+        MonoBehaviour[] saveableObjects = GameObject.FindObjectsOfType<MonoBehaviour>(true);
 
-        foreach (ISaveble saveable in saveableObjects)
+        foreach (MonoBehaviour saveable in saveableObjects)
         {
-            string key = saveable.GetType().FullName;
-            if (saveData.ContainsKey(key))
+            
+
+            if (saveable is ISaveble saveObj)
             {
-                saveable.LoadData(saveData[key]);
+                string key = saveable.name;
+                if (saveData.ContainsKey(key))
+                {
+                    saveObj.LoadData(saveData[key]);
+                }
+
             }
         }
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F5))
+        {
+            Save();
+            Debug.Log("Game Saved");
+        }
+
+        if (Input.GetKeyDown(KeyCode.F6))
+        {
+            Load();
+            Debug.Log("Game Loaded");
+        }
+    }
+
+
+}
+
+[System.Serializable]
+public class SerializationWrapper
+{
+    public List<string> keys = new();
+    public List<string> values = new();
+
+    public SerializationWrapper(Dictionary<string, object> dict)
+    {
+        foreach (var kvp in dict)
+        {
+            keys.Add(kvp.Key);
+            values.Add(JsonUtility.ToJson(kvp.Value));
+        }
+    }
+
+    public Dictionary<string, object> ToDictionary()
+    {
+        var dict = new Dictionary<string, object>();
+
+        for (int i = 0; i < keys.Count; i++)
+        {
+            dict[keys[i]] = JsonUtility.FromJson<object>(values[i]);
+        }
+
+        return dict;
+    }
+
+    
 }

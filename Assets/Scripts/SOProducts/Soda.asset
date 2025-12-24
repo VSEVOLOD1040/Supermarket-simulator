@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Soda
   Size: 2
-  prefab: {fileID: 544507202091605772, guid: 06862fc7ff5a4114eaee9fc4a28fc560, type: 3}
+  prefab: {fileID: 361396664999355158, guid: ecfbe8b10407e944e82784e7434813f1, type: 3}
   image: {fileID: 21300000, guid: 2478265e8c648384892d203ad84a0ad5, type: 3}
   Price: 5
   HeighOffset: -0.05

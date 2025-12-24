@@ -30104,6 +30104,9 @@ MonoBehaviour:
   CurrentLevel: 0
   gameManager: {fileID: 2112425125}
   Money: 500
+  gameData:
+    Balance: 0
+    UpgradePoints: 0
   UpgradePoints: 0
 --- !u!114 &1628048723
 MonoBehaviour:
@@ -41293,8 +41296,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1628048722}
   saveManager: {fileID: 2112425124}
-  gameData:
-    Balance: 0
   CurrentTime: 0
 --- !u!4 &2112425126
 Transform:

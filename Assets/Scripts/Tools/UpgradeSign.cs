@@ -57,11 +57,13 @@ public class UpgradeSign : MonoBehaviour, IInteractable, ISaveble
 
     public void LoadData(object data)
     {
-        if ((bool)data == true)
-        {
-            Activate();
+
+        Debug.Log("Loading UpgradeSign Data");
+        //if ((bool)data == true)
+        //{
+        //    Activate();
 
 
-        }
+        //}
     }
 }
