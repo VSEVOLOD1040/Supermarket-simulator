@@ -53,6 +53,18 @@ public class MarketDataSO : ScriptableObject
         }
         return products;
     }
+
+    public ProductSO GetProductByName(string ProductName)
+    {
+        List<ProductSO> products = new List<ProductSO>();
+        foreach (var entry in entries)
+        {
+            if (entry.product != null && entry.product.Name == ProductName)
+                return entry.product;
+
+        }
+        return null;
+    }
     public void EnableProduct(string productName)
     {
         for (int i = 0; i < entries.Length; i++)

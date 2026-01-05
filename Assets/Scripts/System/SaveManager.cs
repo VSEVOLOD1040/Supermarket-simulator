@@ -43,10 +43,19 @@ public class SaveManager : MonoBehaviour
 
     public void Load()
     {
-        Dictionary<string, object> saveData = new Dictionary<string, object>();
+        Dictionary<string, string> saveData = new Dictionary<string, string>();
         
         string json = File.ReadAllText(filePath);
         saveData = JsonUtility.FromJson<SerializationWrapper>(json).ToDictionary();
+
+        Debug.Log("=====================");
+
+        foreach (var data  in saveData)
+        {
+            Debug.Log(data);
+        }
+        Debug.Log("=====================");
+
 
         MonoBehaviour[] saveableObjects = GameObject.FindObjectsOfType<MonoBehaviour>(true);
 
@@ -59,6 +68,7 @@ public class SaveManager : MonoBehaviour
                 string key = saveable.name;
                 if (saveData.ContainsKey(key))
                 {
+                    //Debug.Log(saveable.name +saveData[key].GetType());
                     saveObj.LoadData(saveData[key]);
                 }
 
@@ -99,13 +109,13 @@ public class SerializationWrapper
         }
     }
 
-    public Dictionary<string, object> ToDictionary()
+    public Dictionary<string, string> ToDictionary()
     {
-        var dict = new Dictionary<string, object>();
+        var dict = new Dictionary<string, string>();
 
         for (int i = 0; i < keys.Count; i++)
         {
-            dict[keys[i]] = JsonUtility.FromJson<object>(values[i]);
+            dict[keys[i]] = values[i];
         }
 
         return dict;

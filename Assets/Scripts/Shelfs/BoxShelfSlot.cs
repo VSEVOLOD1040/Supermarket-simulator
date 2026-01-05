@@ -1,13 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
+using UnityEngine.Playables;
 
 
 public class BoxShelfSlot : MonoBehaviour, IInteractable, ISaveble
 {
 
     public GameObject Box;
+    public BoxShelfData gameData;
     public void Interact(GameObject interactor = null)
     {
         print(interactor);
@@ -65,7 +68,7 @@ public class BoxShelfSlot : MonoBehaviour, IInteractable, ISaveble
     {
         if (Box != null)
         {
-            return new ShelfData(Box.GetComponent<BoxScript>().product, Box.GetComponent<BoxScript>().Amount);
+            return new BoxShelfData(Box.GetComponent<BoxScript>().product, Box.GetComponent<BoxScript>().Amount);
 
         }
         else
@@ -74,13 +77,38 @@ public class BoxShelfSlot : MonoBehaviour, IInteractable, ISaveble
         }
     }
 
-    public void LoadData(object data)
+    public void LoadData(string data)
     {
-        ShelfData loaded_data = (ShelfData)data;
-        
-        GameObject box = Instantiate(Resources.Load<GameObject>("Prefabs/Box"));
-        box.GetComponent<BoxScript>().Init(loaded_data.Product, loaded_data.Amount);
-        Setbox(box);
 
+        BoxShelfData loadedData = JsonUtility.FromJson<BoxShelfData>(data);
+
+        if (loadedData != null)
+        {
+            gameData = loadedData;
+
+
+            GameObject box = Instantiate(Resources.Load<GameObject>("Prefabs/Box"));
+            box.GetComponent<BoxScript>().Init(gameData.Product, gameData.Amount);
+            Setbox(box);
+
+        }
+
+
+        /////////
+        
+        
+
+    }
+    [Serializable]
+    public class BoxShelfData
+    {
+        public ProductSO Product;
+        public int Amount;
+
+        public BoxShelfData(ProductSO product, int amount)
+        {
+            Product = product;
+            Amount = amount;
+        }
     }
 }

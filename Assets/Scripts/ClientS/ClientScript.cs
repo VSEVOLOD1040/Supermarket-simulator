@@ -24,6 +24,7 @@ public class ClientScript : MonoBehaviour
 
     public int CurrentTargetIndex = 0;
     public NavMeshAgent agent;
+
     // Start is called before the first frame update
 
     public bool WillClientBuy(float marketPrice, float currentPrice)
@@ -226,6 +227,12 @@ public class ClientScript : MonoBehaviour
         foreach (var item in ProductsTaken)
         {
             total += item.Key.Price * item.Value;
+        }
+        if (total > 0)
+        {
+            print("Client paid: " + total);
+            gameObject.GetComponent<AudioSource>().Play();
+
         }
         return total;
     }

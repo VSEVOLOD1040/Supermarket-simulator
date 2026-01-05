@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.UIElements;
 
 public class UpgradeSign : MonoBehaviour, IInteractable, ISaveble
@@ -17,6 +19,8 @@ public class UpgradeSign : MonoBehaviour, IInteractable, ISaveble
 
     public float Price;
     public string Name;
+
+    public UpgradeSignData gameData;
     public void Interact(GameObject interactor)
     {
         if (player.RemoveMoney(Price))
@@ -30,6 +34,7 @@ public class UpgradeSign : MonoBehaviour, IInteractable, ISaveble
         ObjectToActivate.SetActive(true);
         gameObject.SetActive(false);
         IsActivated = true;
+        gameData.IsActivated = true;
     }
     public void Init()
     {
@@ -52,18 +57,37 @@ public class UpgradeSign : MonoBehaviour, IInteractable, ISaveble
 
     public object SaveData()
     {
-        return IsActivated;
+        return gameData;
     }
 
-    public void LoadData(object data)
+    public void LoadData(string data)
     {
 
-        Debug.Log("Loading UpgradeSign Data");
-        //if ((bool)data == true)
-        //{
-        //    Activate();
+        UpgradeSignData loadedData = JsonUtility.FromJson<UpgradeSignData>(data);
+        if (loadedData != null)
+        {
+            gameData = loadedData;
+            if (gameData.IsActivated)
+            {
+                Activate();
+            }
+        }
+        else
+        {
+            gameData = new UpgradeSignData(false);
+            Debug.Log("No data found for UpgradeSign: " + gameObject.name);
+        }
+        
+    }
+}
 
+[Serializable]
+public class UpgradeSignData
+{
+    public bool IsActivated;
 
-        //}
+    public UpgradeSignData(bool isActivated)
+    {
+        IsActivated = isActivated;
     }
 }

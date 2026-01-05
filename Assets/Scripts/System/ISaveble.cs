@@ -5,5 +5,5 @@ using UnityEngine;
 public interface ISaveble
 {
     object SaveData();
-    void LoadData(object data);
+    void LoadData(string data);
 }

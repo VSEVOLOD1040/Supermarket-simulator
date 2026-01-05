@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.UI;
 
 public class ShelfScript : MonoBehaviour, IInteractable, ISaveble
@@ -13,7 +14,7 @@ public class ShelfScript : MonoBehaviour, IInteractable, ISaveble
     public Button SetPriceButton;
     public ProductSO current_product;
     public TextMeshProUGUI PriceTag;
-    
+    public MarketDataSO marketDataSO;
     public void Interact(GameObject interactor = null)
     {
         if (interactor != null)
@@ -173,15 +174,27 @@ public class ShelfScript : MonoBehaviour, IInteractable, ISaveble
 
     public object SaveData()
     {
-        return new ShelfData(current_product, GetProductAmount());
+        if (current_product == null)
+        {
+            return new ShelfData("",0);
+        }
+
+        Debug.Log("========Saving Shelf Data: " + current_product.Name + " Amount: " + GetProductAmount()+"================");
+        return new ShelfData(current_product.Name, GetProductAmount());
+
     }
 
-    public void LoadData(object data)
-    {
-        ShelfData loaded_data = (ShelfData)data;
+    public void LoadData(string data)
+    {   
+
+        ShelfData loaded_data = JsonUtility.FromJson<ShelfData>(data);
+        Debug.Log(loaded_data);
+
         for (int i = 0; i < loaded_data.Amount; i++)
         {
-            slots[i].GetComponent<ProductSlot>().SetProduct(loaded_data.Product);
+            Debug.Log("Data loaded for Shelf: " + loaded_data.Product);
+
+            slots[i].GetComponent<ProductSlot>().SetProduct(marketDataSO.GetProductByName(loaded_data.Product));
         }
     }
 
@@ -190,10 +203,10 @@ public class ShelfScript : MonoBehaviour, IInteractable, ISaveble
 [Serializable]
 public class ShelfData
 {
-    public ProductSO Product;
+    public string Product;
     public int Amount;
 
-    public ShelfData(ProductSO product, int amount)
+    public ShelfData(string product, int amount)
     {
         Product = product;
         Amount = amount;

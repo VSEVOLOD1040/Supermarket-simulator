@@ -172,9 +172,9 @@ public class PlayerScript : MonoBehaviour, ISaveble
     {
         gameData.Balance = balance;
     }
-    public void LoadData(object Data)
+    public void LoadData(string Data)
     {
-        GameData loadedData = (GameData)Data;
+        GameData loadedData = JsonUtility.FromJson<GameData>(Data);
 
         if (loadedData != null)
         {
