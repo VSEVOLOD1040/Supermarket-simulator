@@ -20,16 +20,37 @@ public class SaveManager : MonoBehaviour
 
     public void Save()
     {
-        Dictionary<string, object> saveData = new Dictionary<string, object>();
+
+        List<string> keys = new List<string>();
+        List<string> values = new List<string>();
+
+        //Dictionary<string, object> saveData = new Dictionary<string, object>();
         MonoBehaviour[] saveableObjects = GameObject.FindObjectsOfType<MonoBehaviour>(true);
         Debug.Log(saveableObjects.Length);
         foreach (var saveable in saveableObjects)
         {
             if (saveable is ISaveble saveObj)
             {
+                if (saveable.transform.parent )
+                {
+                    //if (saveable.gameObject.activeInHierarchy)
+                    //{
+                        keys.Add($"{saveable.transform.parent.name}_{saveable.name}");
+                        values.Add(JsonUtility.ToJson(saveObj.SaveData()));
+                        //saveData[$"{saveable.transform.parent.name}_{saveable.name}"] = saveObj.SaveData();
+                    //}
 
-                saveData[saveable.name] = saveObj.SaveData();
-                Debug.Log(saveable.name);
+
+                }
+                else
+                {
+                    //if (saveable.gameObject.activeInHierarchy) { 
+                        keys.Add(saveable.name);
+                        values.Add(JsonUtility.ToJson(saveObj.SaveData()));
+                    //}
+
+
+                }
             }
 
             
@@ -37,7 +58,7 @@ public class SaveManager : MonoBehaviour
 
 
 
-        string json = JsonUtility.ToJson(new SerializationWrapper(saveData));
+        string json = JsonUtility.ToJson(new SerializationWrapper(keys, values));
         File.WriteAllText(filePath, json);
     }
 
@@ -65,7 +86,16 @@ public class SaveManager : MonoBehaviour
 
             if (saveable is ISaveble saveObj)
             {
-                string key = saveable.name;
+                string key = "";
+                if (saveable.transform.parent)
+                {
+                    key = $"{saveable.transform.parent.name}_{saveable.name}";
+                }
+                else
+                {
+                    key = saveable.name;
+
+                }
                 if (saveData.ContainsKey(key))
                 {
                     //Debug.Log(saveable.name +saveData[key].GetType());
@@ -100,13 +130,16 @@ public class SerializationWrapper
     public List<string> keys = new();
     public List<string> values = new();
 
-    public SerializationWrapper(Dictionary<string, object> dict)
+    public SerializationWrapper(List<string> Keys, List<string> Values)
     {
-        foreach (var kvp in dict)
-        {
-            keys.Add(kvp.Key);
-            values.Add(JsonUtility.ToJson(kvp.Value));
-        }
+        //foreach (var kvp in dict)
+        //{
+        //    keys.Add(kvp.Key);
+        //    values.Add(JsonUtility.ToJson(kvp.Value));
+        //}
+
+        keys = Keys;
+        values = Values;
     }
 
     public Dictionary<string, string> ToDictionary()

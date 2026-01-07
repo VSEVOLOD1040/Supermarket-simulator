@@ -256,6 +256,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2067984958191112443, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 2675177246128024558, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 5877151242720401712, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 7168160726661935059, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1970,15 +1986,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 4d5496edd84830c4db36dd72250402c8, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.10036502
+      value: 0.11513875
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4d5496edd84830c4db36dd72250402c8, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.10036502
+      value: 0.11513875
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4d5496edd84830c4db36dd72250402c8, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.10036502
+      value: 0.11513875
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4d5496edd84830c4db36dd72250402c8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2607,6 +2623,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2067984958191112443, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 2675177246128024558, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
     - target: {fileID: 4653437129045051487, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: shelfUI
       value: 
@@ -2620,9 +2644,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1417970945}
     - target: {fileID: 5877151242720401712, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 5877151242720401712, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: SetPriceButton
       value: 
       objectReference: {fileID: 1028816149}
+    - target: {fileID: 7168160726661935059, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
     - target: {fileID: 7403711819606566015, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: shelfUI
       value: 
@@ -3071,6 +3103,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2067984958191112443, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 2675177246128024558, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 5877151242720401712, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 7168160726661935059, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6444,6 +6492,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2067984958191112443, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 2675177246128024558, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 5877151242720401712, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 7168160726661935059, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6506,6 +6570,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2067984958191112443, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 2675177246128024558, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
     - target: {fileID: 4653437129045051487, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: shelfUI
       value: 
@@ -6519,9 +6591,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1417970945}
     - target: {fileID: 5877151242720401712, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 5877151242720401712, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: SetPriceButton
       value: 
       objectReference: {fileID: 1028816149}
+    - target: {fileID: 7168160726661935059, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
     - target: {fileID: 7403711819606566015, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: shelfUI
       value: 
@@ -11662,6 +11742,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2067984958191112443, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 2675177246128024558, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
     - target: {fileID: 4653437129045051487, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: shelfUI
       value: 
@@ -11675,9 +11763,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1417970945}
     - target: {fileID: 5877151242720401712, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 5877151242720401712, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: SetPriceButton
       value: 
       objectReference: {fileID: 1028816149}
+    - target: {fileID: 7168160726661935059, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
     - target: {fileID: 7403711819606566015, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: shelfUI
       value: 
@@ -12090,6 +12186,79 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 264050351667759171, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
   m_PrefabInstance: {fileID: 984777614}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &604062768
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 4d5496edd84830c4db36dd72250402c8, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.11513875
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4d5496edd84830c4db36dd72250402c8, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.11513875
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4d5496edd84830c4db36dd72250402c8, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.11513875
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4d5496edd84830c4db36dd72250402c8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 19.44
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4d5496edd84830c4db36dd72250402c8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.6300001
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4d5496edd84830c4db36dd72250402c8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -18.74
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4d5496edd84830c4db36dd72250402c8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4d5496edd84830c4db36dd72250402c8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4d5496edd84830c4db36dd72250402c8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.00000078976143
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4d5496edd84830c4db36dd72250402c8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4d5496edd84830c4db36dd72250402c8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4d5496edd84830c4db36dd72250402c8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -360
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4d5496edd84830c4db36dd72250402c8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4d5496edd84830c4db36dd72250402c8, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4d5496edd84830c4db36dd72250402c8, type: 3}
+      propertyPath: m_Name
+      value: bus stop test for trp v2 (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4d5496edd84830c4db36dd72250402c8, type: 3}
 --- !u!1 &606929972
 GameObject:
   m_ObjectHideFlags: 0
@@ -12805,6 +12974,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2067984958191112443, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 2675177246128024558, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
     - target: {fileID: 4653437129045051487, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: shelfUI
       value: 
@@ -12818,9 +12995,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1417970945}
     - target: {fileID: 5877151242720401712, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 5877151242720401712, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: SetPriceButton
       value: 
       objectReference: {fileID: 1028816149}
+    - target: {fileID: 7168160726661935059, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
     - target: {fileID: 7403711819606566015, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: shelfUI
       value: 
@@ -14007,6 +14192,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2067984958191112443, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 2675177246128024558, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
     - target: {fileID: 4653437129045051487, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: shelfUI
       value: 
@@ -14020,9 +14213,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1417970945}
     - target: {fileID: 5877151242720401712, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 5877151242720401712, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: SetPriceButton
       value: 
       objectReference: {fileID: 1028816149}
+    - target: {fileID: 7168160726661935059, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
     - target: {fileID: 7403711819606566015, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: shelfUI
       value: 
@@ -15524,6 +15725,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2067984958191112443, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 2675177246128024558, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
     - target: {fileID: 4653437129045051487, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: shelfUI
       value: 
@@ -15537,9 +15746,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1417970945}
     - target: {fileID: 5877151242720401712, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 5877151242720401712, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: SetPriceButton
       value: 
       objectReference: {fileID: 1028816149}
+    - target: {fileID: 7168160726661935059, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
     - target: {fileID: 7403711819606566015, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: shelfUI
       value: 
@@ -15623,6 +15840,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2067984958191112443, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 2675177246128024558, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
     - target: {fileID: 4653437129045051487, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: shelfUI
       value: 
@@ -15636,9 +15861,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1417970945}
     - target: {fileID: 5877151242720401712, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 5877151242720401712, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: SetPriceButton
       value: 
       objectReference: {fileID: 1028816149}
+    - target: {fileID: 7168160726661935059, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
     - target: {fileID: 7403711819606566015, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: shelfUI
       value: 
@@ -16027,6 +16260,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2067984958191112443, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 2675177246128024558, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
     - target: {fileID: 4653437129045051487, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: shelfUI
       value: 
@@ -16040,9 +16281,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1417970945}
     - target: {fileID: 5877151242720401712, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 5877151242720401712, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: SetPriceButton
       value: 
       objectReference: {fileID: 1028816149}
+    - target: {fileID: 7168160726661935059, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
     - target: {fileID: 7403711819606566015, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: shelfUI
       value: 
@@ -16479,6 +16728,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2067984958191112443, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 2675177246128024558, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
     - target: {fileID: 4653437129045051487, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: shelfUI
       value: 
@@ -16492,9 +16749,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1417970945}
     - target: {fileID: 5877151242720401712, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 5877151242720401712, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: SetPriceButton
       value: 
       objectReference: {fileID: 1028816149}
+    - target: {fileID: 7168160726661935059, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
     - target: {fileID: 7403711819606566015, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: shelfUI
       value: 
@@ -17020,6 +17285,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2067984958191112443, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 2675177246128024558, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 5877151242720401712, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 7168160726661935059, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -17273,6 +17554,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2067984958191112443, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 2675177246128024558, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
     - target: {fileID: 4653437129045051487, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: shelfUI
       value: 
@@ -17286,9 +17575,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1417970945}
     - target: {fileID: 5877151242720401712, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 5877151242720401712, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: SetPriceButton
       value: 
       objectReference: {fileID: 1028816149}
+    - target: {fileID: 7168160726661935059, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
     - target: {fileID: 7403711819606566015, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: shelfUI
       value: 
@@ -18365,6 +18662,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2067984958191112443, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 2675177246128024558, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
     - target: {fileID: 4653437129045051487, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: shelfUI
       value: 
@@ -18378,9 +18683,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1417970945}
     - target: {fileID: 5877151242720401712, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 5877151242720401712, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: SetPriceButton
       value: 
       objectReference: {fileID: 1028816149}
+    - target: {fileID: 7168160726661935059, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
     - target: {fileID: 7403711819606566015, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: shelfUI
       value: 
@@ -19493,6 +19806,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2067984958191112443, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 2675177246128024558, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
     - target: {fileID: 4653437129045051487, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: shelfUI
       value: 
@@ -19506,9 +19827,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1417970945}
     - target: {fileID: 5877151242720401712, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 5877151242720401712, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: SetPriceButton
       value: 
       objectReference: {fileID: 1028816149}
+    - target: {fileID: 7168160726661935059, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
     - target: {fileID: 7403711819606566015, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: shelfUI
       value: 
@@ -21022,6 +21351,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2067984958191112443, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 2675177246128024558, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 5877151242720401712, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 7168160726661935059, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -22415,6 +22760,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2067984958191112443, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 2675177246128024558, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
     - target: {fileID: 4653437129045051487, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: shelfUI
       value: 
@@ -22428,9 +22781,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1417970945}
     - target: {fileID: 5877151242720401712, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 5877151242720401712, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: SetPriceButton
       value: 
       objectReference: {fileID: 1028816149}
+    - target: {fileID: 7168160726661935059, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
     - target: {fileID: 7403711819606566015, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: shelfUI
       value: 
@@ -24799,79 +25160,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c6e006dbeea5ed4e80e44a861be1635, type: 3}
---- !u!1001 &1358838512
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 4d5496edd84830c4db36dd72250402c8, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.10036502
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4d5496edd84830c4db36dd72250402c8, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.10036502
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4d5496edd84830c4db36dd72250402c8, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.10036502
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4d5496edd84830c4db36dd72250402c8, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 19.79
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4d5496edd84830c4db36dd72250402c8, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.6300001
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4d5496edd84830c4db36dd72250402c8, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -15.83
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4d5496edd84830c4db36dd72250402c8, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4d5496edd84830c4db36dd72250402c8, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4d5496edd84830c4db36dd72250402c8, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4d5496edd84830c4db36dd72250402c8, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4d5496edd84830c4db36dd72250402c8, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4d5496edd84830c4db36dd72250402c8, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4d5496edd84830c4db36dd72250402c8, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4d5496edd84830c4db36dd72250402c8, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 4d5496edd84830c4db36dd72250402c8, type: 3}
-      propertyPath: m_Name
-      value: bus stop test for trp v2
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 4d5496edd84830c4db36dd72250402c8, type: 3}
 --- !u!1001 &1359604818
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25566,6 +25854,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2067984958191112443, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 2675177246128024558, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
     - target: {fileID: 4653437129045051487, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: shelfUI
       value: 
@@ -25579,9 +25875,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1417970945}
     - target: {fileID: 5877151242720401712, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 5877151242720401712, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: SetPriceButton
       value: 
       objectReference: {fileID: 1028816149}
+    - target: {fileID: 7168160726661935059, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
     - target: {fileID: 7403711819606566015, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: shelfUI
       value: 
@@ -29576,6 +29880,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2067984958191112443, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 2675177246128024558, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
     - target: {fileID: 4653437129045051487, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: shelfUI
       value: 
@@ -29589,9 +29901,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1417970945}
     - target: {fileID: 5877151242720401712, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 5877151242720401712, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: SetPriceButton
       value: 
       objectReference: {fileID: 1028816149}
+    - target: {fileID: 7168160726661935059, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
     - target: {fileID: 7403711819606566015, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: shelfUI
       value: 
@@ -29732,6 +30052,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2067984958191112443, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 2675177246128024558, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 5877151242720401712, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 7168160726661935059, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -32355,6 +32691,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2067984958191112443, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 2675177246128024558, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
     - target: {fileID: 4653437129045051487, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: shelfUI
       value: 
@@ -32368,9 +32712,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1417970945}
     - target: {fileID: 5877151242720401712, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 5877151242720401712, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: SetPriceButton
       value: 
       objectReference: {fileID: 1028816149}
+    - target: {fileID: 7168160726661935059, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
     - target: {fileID: 7403711819606566015, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: shelfUI
       value: 
@@ -33496,6 +33848,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2067984958191112443, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 2675177246128024558, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 5877151242720401712, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 7168160726661935059, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -34651,6 +35019,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2067984958191112443, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 2675177246128024558, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 5877151242720401712, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 7168160726661935059, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -35811,8 +36195,8 @@ Transform:
   m_GameObject: {fileID: 1821734402}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -49.600006}
-  m_LocalScale: {x: 50, y: 1, z: 50}
+  m_LocalPosition: {x: 0, y: 0, z: -49.7948}
+  m_LocalScale: {x: 50, y: 1, z: 49.609623}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -36276,6 +36660,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2067984958191112443, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 2675177246128024558, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
     - target: {fileID: 4653437129045051487, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: shelfUI
       value: 
@@ -36289,9 +36681,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1417970945}
     - target: {fileID: 5877151242720401712, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 5877151242720401712, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: SetPriceButton
       value: 
       objectReference: {fileID: 1028816149}
+    - target: {fileID: 7168160726661935059, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
     - target: {fileID: 7403711819606566015, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: shelfUI
       value: 
@@ -37794,6 +38194,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2067984958191112443, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 2675177246128024558, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
     - target: {fileID: 4653437129045051487, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: shelfUI
       value: 
@@ -37807,9 +38215,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1417970945}
     - target: {fileID: 5877151242720401712, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 5877151242720401712, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: SetPriceButton
       value: 
       objectReference: {fileID: 1028816149}
+    - target: {fileID: 7168160726661935059, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
     - target: {fileID: 7403711819606566015, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: shelfUI
       value: 
@@ -38321,6 +38737,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2067984958191112443, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 2675177246128024558, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 5877151242720401712, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 7168160726661935059, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -39132,6 +39564,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2067984958191112443, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 2675177246128024558, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
     - target: {fileID: 4653437129045051487, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: shelfUI
       value: 
@@ -39145,9 +39585,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1417970945}
     - target: {fileID: 5877151242720401712, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 5877151242720401712, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: SetPriceButton
       value: 
       objectReference: {fileID: 1028816149}
+    - target: {fileID: 7168160726661935059, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
     - target: {fileID: 7403711819606566015, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: shelfUI
       value: 
@@ -40084,6 +40532,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2067984958191112443, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 2675177246128024558, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
     - target: {fileID: 4653437129045051487, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: shelfUI
       value: 
@@ -40097,9 +40553,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1417970945}
     - target: {fileID: 5877151242720401712, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 5877151242720401712, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: SetPriceButton
       value: 
       objectReference: {fileID: 1028816149}
+    - target: {fileID: 7168160726661935059, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
     - target: {fileID: 7403711819606566015, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: shelfUI
       value: 
@@ -40405,6 +40869,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2067984958191112443, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 2675177246128024558, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
     - target: {fileID: 4653437129045051487, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: shelfUI
       value: 
@@ -40418,9 +40890,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1417970945}
     - target: {fileID: 5877151242720401712, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 5877151242720401712, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: SetPriceButton
       value: 
       objectReference: {fileID: 1028816149}
+    - target: {fileID: 7168160726661935059, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
     - target: {fileID: 7403711819606566015, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: shelfUI
       value: 
@@ -40852,6 +41332,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2067984958191112443, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 2675177246128024558, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
     - target: {fileID: 4653437129045051487, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: shelfUI
       value: 
@@ -40865,9 +41353,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1417970945}
     - target: {fileID: 5877151242720401712, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 5877151242720401712, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: SetPriceButton
       value: 
       objectReference: {fileID: 1028816149}
+    - target: {fileID: 7168160726661935059, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
     - target: {fileID: 7403711819606566015, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: shelfUI
       value: 
@@ -42770,6 +43266,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2067984958191112443, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 2675177246128024558, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
     - target: {fileID: 4653437129045051487, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: shelfUI
       value: 
@@ -42783,9 +43287,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1417970945}
     - target: {fileID: 5877151242720401712, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
+    - target: {fileID: 5877151242720401712, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: SetPriceButton
       value: 
       objectReference: {fileID: 1028816149}
+    - target: {fileID: 7168160726661935059, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
+      propertyPath: marketDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
     - target: {fileID: 7403711819606566015, guid: 48fa16536af7c8f4c8c980354ad764df, type: 3}
       propertyPath: shelfUI
       value: 
@@ -43222,5 +43734,5 @@ SceneRoots:
   - {fileID: 1320259222}
   - {fileID: 1754724053}
   - {fileID: 11201585}
-  - {fileID: 1358838512}
   - {fileID: 82070709}
+  - {fileID: 604062768}

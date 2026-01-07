@@ -316,6 +316,7 @@ MonoBehaviour:
   SetPriceButton: {fileID: 0}
   current_product: {fileID: 0}
   PriceTag: {fileID: 6105650928445396863}
+  marketDataSO: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
   slots: []
   SlotsParent: {fileID: 2288757254120138192}
 --- !u!23 &1062386341555077724
@@ -1264,6 +1265,7 @@ MonoBehaviour:
   SetPriceButton: {fileID: 0}
   current_product: {fileID: 0}
   PriceTag: {fileID: 7370841783333216160}
+  marketDataSO: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
   slots: []
   SlotsParent: {fileID: 5380621910705452909}
 --- !u!23 &2646595541641938188
@@ -2334,6 +2336,7 @@ MonoBehaviour:
   SetPriceButton: {fileID: 0}
   current_product: {fileID: 0}
   PriceTag: {fileID: 2572703759792196193}
+  marketDataSO: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
   slots: []
   SlotsParent: {fileID: 5386901697551700322}
 --- !u!23 &4170609229420450794
@@ -3107,6 +3110,7 @@ MonoBehaviour:
   SetPriceButton: {fileID: 0}
   current_product: {fileID: 0}
   PriceTag: {fileID: 3403184257748094741}
+  marketDataSO: {fileID: 11400000, guid: 486ecafa0958038468e83409ae34f829, type: 2}
   slots: []
   SlotsParent: {fileID: 5368379056984587406}
 --- !u!23 &1091140392011627837

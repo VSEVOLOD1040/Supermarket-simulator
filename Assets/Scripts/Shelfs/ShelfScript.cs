@@ -15,6 +15,9 @@ public class ShelfScript : MonoBehaviour, IInteractable, ISaveble
     public ProductSO current_product;
     public TextMeshProUGUI PriceTag;
     public MarketDataSO marketDataSO;
+
+    public ShelfData shelfData;
+
     public void Interact(GameObject interactor = null)
     {
         if (interactor != null)
@@ -43,6 +46,9 @@ public class ShelfScript : MonoBehaviour, IInteractable, ISaveble
                         if (box_script.product == current_product)
                         {
                             slot.GetComponent<ProductSlot>()?.SetProduct(box_script.product);
+
+                            shelfData.Amount = GetProductAmount();
+                            shelfData.ProductName = current_product.Name;
 
                             box_script.TakeProduct();
 
@@ -103,10 +109,15 @@ public class ShelfScript : MonoBehaviour, IInteractable, ISaveble
                     Destroy(slot.transform.GetChild(0).gameObject);
                     TakenAmount++;
 
+                    shelfData.Amount = GetProductAmount();
+
                     if (CheckIfShelfEmpty())
                     {
                         current_product = null;
                         PriceTag.text = "";
+
+                        shelfData.Amount = 0;
+                        shelfData.ProductName = "";
                     }
                     break;
                 }
@@ -149,12 +160,7 @@ public class ShelfScript : MonoBehaviour, IInteractable, ISaveble
     // Start is called before the first frame update
     void Start()
     {
-        slots = new List<GameObject>();
-
-        foreach (Transform child in SlotsParent.transform)
-        {
-            slots.Add(child.gameObject);
-        }
+        
     }
     private void Awake()
     {
@@ -174,13 +180,12 @@ public class ShelfScript : MonoBehaviour, IInteractable, ISaveble
 
     public object SaveData()
     {
-        if (current_product == null)
-        {
-            return new ShelfData("",0);
-        }
+        //if (current_product == null)
+        //{
+        //    return new ShelfData("",0);
+        //}
 
-        Debug.Log("========Saving Shelf Data: " + current_product.Name + " Amount: " + GetProductAmount()+"================");
-        return new ShelfData(current_product.Name, GetProductAmount());
+        return shelfData;
 
     }
 
@@ -192,23 +197,44 @@ public class ShelfScript : MonoBehaviour, IInteractable, ISaveble
 
         for (int i = 0; i < loaded_data.Amount; i++)
         {
-            Debug.Log("Data loaded for Shelf: " + loaded_data.Product);
+            Debug.Log("Data loaded for Shelf: " + loaded_data.ProductName);
 
-            slots[i].GetComponent<ProductSlot>().SetProduct(marketDataSO.GetProductByName(loaded_data.Product));
+            if (i < slots.Count)
+            {
+                slots[i].GetComponent<ProductSlot>().SetProduct(marketDataSO.GetProductByName(loaded_data.ProductName));
+
+            }
         }
+
+        shelfData = loaded_data;
     }
 
-    
+    private void OnEnable()
+    {
+        slots = new List<GameObject>();
+
+        foreach (Transform child in SlotsParent.transform)
+        {
+            slots.Add(child.gameObject);
+        }
+
+        for (int i = 0; i < shelfData.Amount; i++)
+        {
+            Debug.Log("Data loaded for Shelf: " + shelfData.ProductName);
+
+            slots[i].GetComponent<ProductSlot>().SetProduct(marketDataSO.GetProductByName(shelfData.ProductName));
+        }
+    }
 }
 [Serializable]
 public class ShelfData
 {
-    public string Product;
+    public string ProductName;
     public int Amount;
 
     public ShelfData(string product, int amount)
     {
-        Product = product;
+        ProductName = product;
         Amount = amount;
     }
 }
