@@ -12,6 +12,7 @@ public class OpenShopButton : MonoBehaviour
     void OnMouseDown()
     {
         gameManager.OpenShop();
+        GameObject.Find("GAME_MANAGER").GetComponent<TimeManager>().StartWorkDay();
     }
 
     // Start is called before the first frame update

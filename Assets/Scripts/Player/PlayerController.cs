@@ -62,30 +62,30 @@ public class PlayerController : MonoBehaviour
         {
             HandleMouseLook();
         }
-    
+
         HandleJump();
     }
 
     void FixedUpdate()
     {
-            
+
         HandleMovement();
 
     }
 
     void HandleMouseLook()
     {
-            
-            
-            float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
-            float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
 
-            verticalRotation -= mouseY;
-            verticalRotation = Mathf.Clamp(verticalRotation, -maxVerticalAngle, maxVerticalAngle);
 
-            cameraTransform.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f);
-            transform.Rotate(Vector3.up * mouseX);
-            
+        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
+        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
+
+        verticalRotation -= mouseY;
+        verticalRotation = Mathf.Clamp(verticalRotation, -maxVerticalAngle, maxVerticalAngle);
+
+        cameraTransform.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f);
+        transform.Rotate(Vector3.up * mouseX);
+
 
     }
 
@@ -110,4 +110,10 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
     }
+
+    public void TurnOnCharacterMouseController(bool state)
+    {
+        MouseLock(state);
+        SwitchCameraRotation(state);
     }
+}

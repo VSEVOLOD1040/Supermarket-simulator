@@ -5,15 +5,15 @@ using UnityEngine;
 
 public class TimeManager : MonoBehaviour
 {
-    public bool isShopOpen = false;
+    public static bool isShopOpen = false;
     public float CurrentTime;
     public float TimeSpeed = 1;
 
-    public Action OnWorkDayStart;
-    public Action OnWorkDayEnd;
+    public static Action OnWorkDayStart;
+    public static Action OnWorkDayEnd;
 
-    float StartWorkTime;
-    float EndWorkTime;
+    public float StartWorkTime = 0;
+    public float EndWorkTime = 600;
 
     public Dictionary<float, Action> Events = new Dictionary<float, Action>();
 
@@ -31,9 +31,10 @@ public class TimeManager : MonoBehaviour
             CurrentTime += Time.deltaTime*(TimeSpeed/60);
         }
 
-        if (CurrentTime >= StartWorkTime && isShopOpen == false)
+        if (CurrentTime > StartWorkTime && isShopOpen == false)
         {
             StartWorkDay()  ;
+
         }
         if (CurrentTime >= EndWorkTime && isShopOpen == true)
         {

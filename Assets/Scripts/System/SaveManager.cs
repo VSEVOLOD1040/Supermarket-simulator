@@ -106,6 +106,8 @@ public class SaveManager : MonoBehaviour
         }
     }
 
+    float timer = 0f;
+    bool isLoaded = false;
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.F5))
@@ -119,6 +121,14 @@ public class SaveManager : MonoBehaviour
             Load();
             Debug.Log("Game Loaded");
         }
+
+        timer += Time.deltaTime;
+        if (timer >= 5f && isLoaded == false)
+        {
+            Load();
+            isLoaded = true;
+        }
+        
     }
 
 

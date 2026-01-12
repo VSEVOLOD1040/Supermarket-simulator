@@ -21,10 +21,10 @@ public class ClientSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            Instantiate(ClientPrefab, SpawnPoint.position, Quaternion.identity);
-        }
+        //if (Input.GetKeyDown(KeyCode.P))
+        //{
+        //    Instantiate(ClientPrefab, SpawnPoint.position, Quaternion.identity);
+        //}
 
 
     }
@@ -37,7 +37,7 @@ public class ClientSpawner : MonoBehaviour
         {
             yield return new WaitForSeconds(SpawnInterval);
 
-            if (gameManager.CurrentTime > 0 && gameManager.CurrentTime < TimeToEndClientSpawn)
+            if (TimeManager.isShopOpen)
             {
                 Instantiate(ClientPrefab, SpawnPoint.position, Quaternion.identity);
 
