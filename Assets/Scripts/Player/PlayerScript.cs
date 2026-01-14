@@ -36,6 +36,10 @@ public class PlayerScript : MonoBehaviour, ISaveble
         UpdateBalance(Money);
         OnMoneyChanged?.Invoke(money);
         UpdateUI();
+
+        Statistic.instance.MoneyEarned += (int)money;
+        Statistic.instance.Money = (int)Money;
+
     }
     public bool RemoveMoney(float money)
     {
@@ -45,6 +49,9 @@ public class PlayerScript : MonoBehaviour, ISaveble
             Money = (float)Math.Round(Money, 2);
             UpdateUI();
             UpdateBalance(Money);
+
+            Statistic.instance.MoneySpent += (int)money;
+            Statistic.instance.Money = (int)Money;
 
             return true;
         }

@@ -93,9 +93,13 @@ public class ClientScript : MonoBehaviour
 
             AddCashPoint();
         }
+        else
+        {
+            Statistic.instance.CustomersDeserved += 1;
+        }
 
 
-        MovementList.Add(ExitPoint.position);
+            MovementList.Add(ExitPoint.position);
 
         agent.SetDestination(MovementList[CurrentTargetIndex]);
     }
@@ -204,6 +208,7 @@ public class ClientScript : MonoBehaviour
             else if(CurrentTargetIndex == MovementList.Count - 2)
             {
                 GameObject.Find("Player").GetComponent<PlayerScript>().AddMoney(Pay());
+                Statistic.instance.CustomersServed += 1;
             }
             else if (CurrentTargetIndex == MovementList.Count - 1)
             {
@@ -234,6 +239,7 @@ public class ClientScript : MonoBehaviour
             gameObject.GetComponent<AudioSource>().Play();
 
         }
+
         return total;
     }
     void PrintDictionary(Dictionary<string, int> dict)

@@ -83,6 +83,8 @@ public class ProductsSupplierMenager : MonoBehaviour
             {
                 product.Price = marketData.GetPrice(product) / marketData.GetBatchSize(product);
             }
+
+            Statistic.instance.AddProduct(product.Name, marketData.GetBatchSize(product));
         }
         
     }

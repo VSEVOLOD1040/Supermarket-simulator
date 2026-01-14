@@ -123,7 +123,14 @@ public class ShelfScript : MonoBehaviour, IInteractable, ISaveble
                 }
             }
         }
-        if (product) return product;
+
+
+        if (product)
+        {
+            Statistic.instance.RemoveProduct(product.Name, TakenAmount);
+            return product;
+
+        }
 
         return null;
 
