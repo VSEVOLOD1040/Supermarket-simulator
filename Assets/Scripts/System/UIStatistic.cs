@@ -7,14 +7,23 @@ public class UIStatistic : MonoBehaviour
 {
     public GameObject statisticPanel;
     public TextMeshProUGUI moneyText;
+
+    public Statistic statistic;
+
+    public GameObject ProductUIPrefab;
+    public Transform ProductRemainsParent;
+
     // Start is called before the first frame update
     void Awake()
     {
         
         CloseShopButton.OnDayEnded += OpenPanel;
+    }
+    private void Start()
+    {
+        statistic = Statistic.instance;
 
     }
-
     private void OnDestroy()
     {
         CloseShopButton.OnDayEnded -= OpenPanel;
@@ -38,7 +47,21 @@ public class UIStatistic : MonoBehaviour
 
     public void InitStatistic()
     {
-        moneyText.text = "Money: "+Statistic.instance.Money.ToString();
+        statistic.UpdateProfit();
+        moneyText.text = $"Money: {statistic.Money}\n" +
+            $"Customers served: {statistic.CustomersServed}\n" +
+            $"Customers deserved: {statistic.CustomersDeserved}\n\n" +
+            $"Items earned: {statistic.ItemsEarned}\n" +
+            $"Items sold: {statistic.ItemsSold}\n\n" +
+            $"Profit: {statistic.Profit}";
+
+
+        foreach (var item in statistic.RemainingProductsInMarket)
+        {
+            GameObject productUIObj = Instantiate(ProductUIPrefab, ProductRemainsParent);
+            UIProductRemainsStatistic productUI = productUIObj.GetComponent<UIProductRemainsStatistic>();
+            productUI.Init(item.Key, item.Value);
+        }
     }
 
 }

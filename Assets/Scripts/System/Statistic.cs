@@ -61,4 +61,9 @@ public class Statistic : MonoBehaviour
 
     }
 
+    public void UpdateProfit()
+    {
+        Profit = MoneyEarned - MoneySpent;
+    }
+
 }
