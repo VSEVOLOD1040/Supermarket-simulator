@@ -20,12 +20,7 @@ public class MarketDataSO : ScriptableObject
 
     private void OnEnable()
     {
-        entryLookup = new Dictionary<ProductSO, MarketEntry>();
-        foreach (var entry in entries)
-        {
-            if (entry.product != null)
-                entryLookup[entry.product] = entry;
-        }
+        Init();
     }
 
     public int GetPrice(ProductSO product)
@@ -35,9 +30,20 @@ public class MarketDataSO : ScriptableObject
 
         return 0;
     }
-
+    public void Init()
+    {
+        entryLookup = new Dictionary<ProductSO, MarketEntry>();
+        foreach (var entry in entries)
+        {
+            if (entry.product != null)
+                entryLookup[entry.product] = entry;
+        }
+    }
     public int GetBatchSize(ProductSO product)
     {
+        Init();
+
+        Debug.Log("Getting batch size for product: " + product.Name);
         if (entryLookup.TryGetValue(product, out MarketEntry entry))
             return entry.batchSize;
 
