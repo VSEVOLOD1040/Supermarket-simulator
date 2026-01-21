@@ -14,15 +14,42 @@ public class OutlineOnHover : MonoBehaviour
             outline.enabled = false;
     }
 
-    void OnMouseEnter()
-    {
-        if (outline != null)
-            outline.enabled = true;
-    }
+    //void OnMouseEnter()
+    //{
+    //    if (outline != null && CheckDistance())
+    //        outline.enabled = true;
+    //}
 
+    private void OnMouseOver()
+    {
+        if (CheckDistance())
+            outline.enabled = true;
+        else
+        {
+            outline.enabled = false;
+
+        }
+    }
     void OnMouseExit()
     {
-        if (outline != null)
-            outline.enabled = false;
+
+        outline.enabled = false;
+    }
+
+    public bool CheckDistance()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        float MaxDistanceAllowed = player.GetComponent<PlayerScript>().MaxRaycastDistance;
+
+        if (Vector3.Distance(player.transform.position, transform.position) > MaxDistanceAllowed)
+        {
+            return false;
+
+        }
+        else
+        {
+            return true;
+        }
+
     }
 }

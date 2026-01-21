@@ -9,6 +9,7 @@ public class TrashScript : MonoBehaviour
     public float YPosition = 0.5f;
     public float SpawnInterval = 2f;
     public bool isSpawnWorks = false;
+    public float OverLapSphereRadius = 0.3f;
 
     public GameObject[] TrashPrefabs;
     // Start is called before the first frame update
@@ -40,7 +41,24 @@ public class TrashScript : MonoBehaviour
     {
         Vector3 spawnPosition = GetRandomPosition(boxCollider.bounds);
         GameObject trash = TrashPrefabs[Random.Range(0, TrashPrefabs.Length)];
-        Instantiate(trash, spawnPosition, Quaternion.identity);
+        trash = Instantiate(trash, spawnPosition, Quaternion.identity);
+
+        Collider[] collisions = Physics.OverlapSphere(trash.transform.position, OverLapSphereRadius);
+
+        if (collisions.Length > 1)
+        {
+            foreach (Collider col in collisions)
+            {
+                if (col.gameObject != trash && col.gameObject.tag != "Player" && col.gameObject.tag != "Client" && col.gameObject.tag != "Floor")
+                {
+                    
+                    Destroy(trash);
+                    Spawn();
+                    break;
+
+                }
+            }
+        }
     }
     public Vector3 GetRandomPosition(Bounds bounds)
     {

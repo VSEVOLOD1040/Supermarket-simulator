@@ -53,6 +53,7 @@ public class UIStatistic : MonoBehaviour
             $"Customers deserved: {statistic.CustomersDeserved}\n\n" +
             $"Items earned: {statistic.ItemsEarned}\n" +
             $"Items sold: {statistic.ItemsSold}\n\n" +
+            $"Trash cleaned: {statistic.TrashItemsCleaned}\n" +
             $"Profit: {statistic.Profit}";
 
 

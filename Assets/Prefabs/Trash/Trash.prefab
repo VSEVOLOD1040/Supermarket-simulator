@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7981705823843733456}
   - component: {fileID: 7370186149335251997}
   - component: {fileID: 3753514129112383915}
+  - component: {fileID: -2176960323344880173}
   m_Layer: 0
   m_Name: Trash
   m_TagString: Untagged
@@ -150,3 +151,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   color: 0
   eraseRenderer: 0
+--- !u!114 &-2176960323344880173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1903712869757115887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13a676cc921592344ba3c161880f0fa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

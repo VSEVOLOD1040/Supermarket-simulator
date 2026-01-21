@@ -2,6 +2,7 @@ using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Statistic : MonoBehaviour
 {
@@ -30,6 +31,8 @@ public class Statistic : MonoBehaviour
 
     public int ItemsSold;
     public int ItemsEarned;
+
+    public int TrashItemsCleaned;
 
     public Dictionary<string, int> RemainingProductsInMarket = new Dictionary<string, int>();
 

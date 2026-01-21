@@ -12,6 +12,7 @@ public class PlayerScript : MonoBehaviour, ISaveble
     public GameObject BixItemPositionGameObject;
     public GameObject SmallItemPositionGameObject;
     public GameObject ToolPosition;
+    public GameObject BroomPosition;
     
     public TextMeshProUGUI UImoneytext;
     public TextMeshProUGUI UIlevel;
@@ -28,6 +29,8 @@ public class PlayerScript : MonoBehaviour, ISaveble
     public GameData gameData;
 
     public int UpgradePoints;
+
+    public float MaxRaycastDistance;
     public void AddMoney(float money)
     {
         Money += money;
@@ -75,7 +78,7 @@ public class PlayerScript : MonoBehaviour, ISaveble
 
         if (CheckInventory())
         {
-            item.GetComponent<BoxCollider>().enabled = false; //потрібно переробити для всіх коллайдерів
+            item.GetComponent<Collider>().enabled = false; //потрібно переробити для всіх коллайдерів
             item.GetComponent<Rigidbody>().isKinematic = true;
 
             item.transform.SetParent(gameObject.transform, true);
@@ -91,6 +94,9 @@ public class PlayerScript : MonoBehaviour, ISaveble
                     break;
                 case ItemSize.Tool:
                     item.transform.localPosition = ToolPosition.transform.localPosition;
+                    break;
+                case ItemSize.Broom:
+                    item.transform.localPosition = BroomPosition.transform.localPosition;
                     break;
 
             }
@@ -154,7 +160,7 @@ public class PlayerScript : MonoBehaviour, ISaveble
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         IInteractable InteractableObject = null;
-        if (Physics.Raycast(ray, out hit))
+        if (Physics.Raycast(ray, out hit, MaxRaycastDistance))
         {
             if (hit.collider.gameObject.TryGetComponent<IInteractable>(out InteractableObject))
             {
