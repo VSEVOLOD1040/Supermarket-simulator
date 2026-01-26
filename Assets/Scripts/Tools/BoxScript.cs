@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
+
 public class BoxScript : MonoBehaviour, IPickableObject, IInteractable
 {
 
@@ -30,7 +31,8 @@ public class BoxScript : MonoBehaviour, IPickableObject, IInteractable
 
         
 
-        gameObject.transform.SetParent(null);
+        gameObject.transform.SetParent(GameObject.Find("BOXES").transform);
+
     }
 
     public void PickUp()

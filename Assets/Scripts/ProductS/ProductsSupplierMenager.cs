@@ -76,6 +76,7 @@ public class ProductsSupplierMenager : MonoBehaviour
         if (player.RemoveMoney(marketData.GetPrice(product)))
         {
             GameObject box = Instantiate(box_prefab, position_where_this_script_must_spawn_a_box.position, Quaternion.identity);
+            box.transform.SetParent(GameObject.Find("BOXES").transform);
             BoxScript boxScript = box.GetComponent<BoxScript>();
             boxScript.Init(product, marketData.GetBatchSize(product));
 

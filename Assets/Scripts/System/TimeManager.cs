@@ -2,10 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class TimeManager : MonoBehaviour
 {
     public static bool isShopOpen = false;
+
+    public int CurrentTimeCheck;
     public float CurrentTime;
     public float TimeSpeed = 1;
 
@@ -17,10 +20,11 @@ public class TimeManager : MonoBehaviour
 
     public Dictionary<float, Action> Events = new Dictionary<float, Action>();
 
+    public List<UnityEvent> events = new List<UnityEvent>();
     // Start is called before the first frame update
     void Start()
     {
-        
+        CurrentTimeCheck = (int)StartWorkTime;
     }
 
     // Update is called once per frame
@@ -28,6 +32,11 @@ public class TimeManager : MonoBehaviour
     {
         if (isShopOpen)
         {
+            if ((int)CurrentTime > CurrentTimeCheck + 1)
+            {
+                CurrentTimeCheck = (int)CurrentTime;
+                ActivateEvent();
+            }
             CurrentTime += Time.deltaTime*(TimeSpeed/60);
         }
 
@@ -39,6 +48,16 @@ public class TimeManager : MonoBehaviour
         if (CurrentTime >= EndWorkTime && isShopOpen == true)
         {
             EndWorkDay();
+        }
+        
+
+        if (Input.GetKeyDown(KeyCode.F8))
+        {
+            Time.timeScale = 5;
+        }
+        if (Input.GetKeyDown(KeyCode.F7))
+        {
+            Time.timeScale = 1;
         }
     }
 
@@ -59,5 +78,17 @@ public class TimeManager : MonoBehaviour
         OnWorkDayEnd?.Invoke();
         isShopOpen = false;
     }
+
+    public void ActivateEvent()
+    {
+        events[(int)CurrentTime]?.Invoke();
+    }
+
+    public void TestEventDebug()
+    {
+               Debug.Log("Event Activated at time: " + CurrentTime);
+    }
+
+
 
 }

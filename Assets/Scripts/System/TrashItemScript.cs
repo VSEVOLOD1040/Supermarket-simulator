@@ -21,8 +21,24 @@ public class TrashItemScript : MonoBehaviour, IInteractable
     {
         if (interactor.GetComponent<PlayerScript>().CheckInventory("broom"))
         {
-            Statistic.instance.TrashItemsCleaned += 1;
-            Destroy(gameObject);
+
+
+            Collider[] collisions = Physics.OverlapSphere(gameObject.transform.position, 0.25f);
+
+            foreach (Collider col in collisions)
+            {
+                if (col.gameObject.transform.IsChildOf(GameObject.Find("broom").transform))
+                {
+
+                    Statistic.instance.TrashItemsCleaned += 1;
+                    Destroy(gameObject);
+                    break;
+
+                }
+            }
+
+
+            
         }
         //else
         //{
