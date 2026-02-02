@@ -122,12 +122,12 @@ public class SaveManager : MonoBehaviour
             Debug.Log("Game Loaded");
         }
 
-        timer += Time.deltaTime;
-        if (timer >= 5f && isLoaded == false)
-        {
-            Load();
-            isLoaded = true;
-        }
+        //timer += Time.deltaTime;
+        //if (timer >= 5f && isLoaded == false)
+        //{
+        //    Load();
+        //    isLoaded = true;
+        //}
         
     }
 

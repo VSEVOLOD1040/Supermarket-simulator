@@ -24,7 +24,10 @@ public class TimeManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        CurrentTimeCheck = (int)StartWorkTime;
+        Debug.Log(isShopOpen);
+        isShopOpen = false;
+
+        CurrentTimeCheck = 6;
     }
 
     // Update is called once per frame
@@ -32,19 +35,21 @@ public class TimeManager : MonoBehaviour
     {
         if (isShopOpen)
         {
+
             if ((int)CurrentTime > CurrentTimeCheck + 1)
             {
                 CurrentTimeCheck = (int)CurrentTime;
                 ActivateEvent();
             }
-            CurrentTime += Time.deltaTime*(TimeSpeed/60);
-        }
-
-        if (CurrentTime > StartWorkTime && isShopOpen == false)
-        {
-            StartWorkDay()  ;
+            CurrentTime += Time.deltaTime * (TimeSpeed / 60);
 
         }
+
+        //if (CurrentTime > StartWorkTime && isShopOpen == false)
+        //{
+        //    StartWorkDay()  ;
+
+        //}
         if (CurrentTime >= EndWorkTime && isShopOpen == true)
         {
             EndWorkDay();
@@ -81,6 +86,7 @@ public class TimeManager : MonoBehaviour
 
     public void ActivateEvent()
     {
+        Debug.Log("Activating Event at time: " + CurrentTime);
         events[(int)CurrentTime]?.Invoke();
     }
 

@@ -1,12 +1,14 @@
 using JetBrains.Annotations;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Statistic : MonoBehaviour
+public class Statistic : MonoBehaviour, ISaveble
 {
     public static Statistic instance;
+    public StatisticData statisticData;
 
     private void Awake()
     {
@@ -69,4 +71,49 @@ public class Statistic : MonoBehaviour
         Profit = MoneyEarned - MoneySpent;
     }
 
+    public object SaveData()
+    {
+        UpdateProfit();
+        statisticData.CustomersServed += CustomersServed;
+        statisticData.CustomersDeserved += CustomersDeserved;
+        statisticData.MoneyEarned += MoneyEarned;
+        statisticData.MoneySpent += MoneySpent;
+        statisticData.Profit += Profit;
+        statisticData.ItemsSold += ItemsSold;
+        statisticData.ItemsEarned += ItemsEarned;
+        statisticData.TrashItemsCleaned += TrashItemsCleaned;
+
+        return statisticData;
+    }
+
+    public void LoadData(string data)
+    {
+        
+    }
+    [Serializable]
+    public class StatisticData
+    {
+        public int CustomersServed;
+        public int CustomersDeserved;
+        public int MoneyEarned;
+        public int MoneySpent;
+        public int Profit; // MoneyEarned - MoneySpent
+        public int ItemsSold;
+        public int ItemsEarned;
+        public int TrashItemsCleaned;
+       
+
+        public StatisticData(Statistic statistic)
+        {
+            CustomersServed = statistic.CustomersServed;
+            CustomersDeserved = statistic.CustomersDeserved;
+            MoneyEarned = statistic.MoneyEarned;
+            MoneySpent = statistic.MoneySpent;
+            Profit = statistic.Profit;
+            ItemsSold = statistic.ItemsSold;
+            ItemsEarned = statistic.ItemsEarned;
+            TrashItemsCleaned = statistic.TrashItemsCleaned;
+
+        }
+    }
 }

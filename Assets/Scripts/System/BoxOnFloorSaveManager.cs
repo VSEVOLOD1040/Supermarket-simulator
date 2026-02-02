@@ -9,7 +9,7 @@ using static BoxShelfSlot;
 public class BoxOnFloorSaveManager : MonoBehaviour, ISaveble
 {
 
-    public BoxOnFloorData[] BoxData;
+    public List<BoxOnFloorData> BoxData;
     public BoxOnFloorSaveData saveData;
     public MarketDataSO marketData;
     public void LoadData(string data)
@@ -41,7 +41,7 @@ public class BoxOnFloorSaveManager : MonoBehaviour, ISaveble
         {
             BoxOnFloorData boxData = InitBoxData(box);
             
-            BoxData.Append(boxData);
+            BoxData.Add(boxData);
         }
 
         saveData.boxes=BoxData;
@@ -86,8 +86,8 @@ public class BoxOnFloorData
 [Serializable]
 public class BoxOnFloorSaveData
 {
-    public BoxOnFloorData[] boxes;
-    public BoxOnFloorSaveData(BoxOnFloorData[] boxes)
+    public List<BoxOnFloorData> boxes;
+    public BoxOnFloorSaveData(List<BoxOnFloorData> boxes)
     {
         this.boxes = boxes;
     }

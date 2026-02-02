@@ -6,7 +6,9 @@ public class ClientSpawner : MonoBehaviour
 {
     public GameObject ClientPrefab;
     public Transform SpawnPoint;
-    public float SpawnInterval = 5f;
+    public float SpawnIntervalMin = 5f;
+    public float SpawnIntervalMax = 5f;
+
     public float TimeToEndClientSpawn = 600f;
 
     public GameManager gameManager;
@@ -35,7 +37,7 @@ public class ClientSpawner : MonoBehaviour
         print("Client Spawner Started");
         while (true)
         {
-            yield return new WaitForSeconds(SpawnInterval);
+            yield return new WaitForSeconds(Random.Range(SpawnIntervalMin, SpawnIntervalMax));
 
             if (TimeManager.isShopOpen)
             {
@@ -43,5 +45,14 @@ public class ClientSpawner : MonoBehaviour
 
             }
         }
+    }
+    public void ChangeSpawnIntervalMIN(float min)
+    {
+        SpawnIntervalMin = min;
+        //SpawnIntervalMax = max;
+    }
+    public void ChangeSpawnIntervalMAX(float max)
+    {
+        SpawnIntervalMax = max;
     }
 }
