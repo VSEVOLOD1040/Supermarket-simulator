@@ -5,17 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class MenuHandler : MonoBehaviour
 {
-    public GameObject MainFrame;
-    public GameObject SettingsFrame;
-    public GameObject AboutFrame;
-    public GameObject ExitFrame;
 
+
+    public GameObject[] Frames;
     public void SwitchFrame(GameObject frameToOpen)
     {
-        MainFrame.SetActive(false);
-        SettingsFrame.SetActive(false);
-        AboutFrame.SetActive(false);
-        ExitFrame.SetActive(false);
+        foreach (var frame in Frames)
+        {
+            frame.SetActive(false);
+        }
         frameToOpen.SetActive(true);
     }
 
