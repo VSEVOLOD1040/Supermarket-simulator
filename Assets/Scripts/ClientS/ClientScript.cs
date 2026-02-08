@@ -26,7 +26,7 @@ public class ClientScript : MonoBehaviour
     public NavMeshAgent agent;
 
     // Start is called before the first frame update
-
+    public AudioSO audio_buy;
     public bool WillClientBuy(float marketPrice, float currentPrice)
     {
         float chance;
@@ -236,7 +236,8 @@ public class ClientScript : MonoBehaviour
         if (total > 0)
         {
             print("Client paid: " + total);
-            gameObject.GetComponent<AudioSource>().Play();
+            AudioManager.instance.PlayAudio(audio_buy, transform.position);
+
 
         }
 
