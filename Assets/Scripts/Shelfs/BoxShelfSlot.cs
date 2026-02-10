@@ -26,13 +26,13 @@ public class BoxShelfSlot : MonoBehaviour, IInteractable, ISaveble
 
                     Box.GetComponent<Rigidbody>().isKinematic = false;
                     Box.GetComponent<BoxCollider>().enabled = true;
-                    BoxScript box_script = Box.GetComponent<BoxScript>();
+                    Box box_script = Box.GetComponent<Box>();
                     box_script.PickUp();
                     Box = null;
                 }
 
             }
-            else if (item.TryGetComponent<BoxScript>(out BoxScript box_script))
+            else if (item.TryGetComponent<Box>(out Box box_script))
             {
                 if (Box == null)
                 {
@@ -54,7 +54,7 @@ public class BoxShelfSlot : MonoBehaviour, IInteractable, ISaveble
 
     public void Setbox(GameObject box)
     {
-        BoxScript box_script = box.GetComponent<BoxScript>();
+        Box box_script = box.GetComponent<Box>();
 
         box_script.gameObject.GetComponent<Rigidbody>().isKinematic = true;
         box_script.gameObject.GetComponent<BoxCollider>().enabled = false;

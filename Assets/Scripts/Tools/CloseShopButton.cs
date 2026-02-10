@@ -38,5 +38,9 @@ public class CloseShopButton : MonoBehaviour
             OnDayEnded?.Invoke();
             Debug.Log("Day Ended");
         }
+        else
+        {
+            UIMessage.instance.ShowMessage("You can't end the day yet!");
+        }
     }
 }

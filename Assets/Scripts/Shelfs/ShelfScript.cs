@@ -35,25 +35,28 @@ public class ShelfScript : MonoBehaviour, IInteractable, ISaveble
                 {
                     if (slot.GetComponent<ProductSlot>().Product == null)
                     {
+                        if (box_script.Amount > 0)
+                        {
+                            if (current_product == null)
+                            {
+                                current_product = box_script.product;
+                                UpdatePriceText();
+
+                            }
+
+                            if (box_script.product == current_product)
+                            {
+                                slot.GetComponent<ProductSlot>()?.SetProduct(box_script.product);
+
+                                shelfData.Amount = GetProductAmount();
+                                shelfData.ProductName = current_product.Name;
+
+                                box_script.TakeProduct();
+
+                                break;
+                            }
+                        }
                        
-                        if (current_product == null)
-                        {
-                            current_product = box_script.product;
-                            UpdatePriceText();
-
-                        }
-
-                        if (box_script.product == current_product)
-                        {
-                            slot.GetComponent<ProductSlot>()?.SetProduct(box_script.product);
-
-                            shelfData.Amount = GetProductAmount();
-                            shelfData.ProductName = current_product.Name;
-
-                            box_script.TakeProduct();
-
-                            break;
-                        }
 
                     }
                 }

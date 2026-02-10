@@ -40,10 +40,10 @@ public class TrashItemScript : MonoBehaviour, IInteractable
 
             
         }
-        //else
-        //{
-
-        //}
+        else
+        {
+            UIMessage.instance.ShowMessage("You need a broom to clean this!");
+        }
     }
 
 }
