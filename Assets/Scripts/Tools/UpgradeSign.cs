@@ -75,7 +75,7 @@ public class UpgradeSign : MonoBehaviour, IInteractable, ISaveble
         else
         {
             gameData = new UpgradeSignData(false);
-            Debug.Log("No data found for UpgradeSign: " + gameObject.name);
+            //Debug.Log("No data found for UpgradeSign: " + gameObject.name);
         }
         
     }

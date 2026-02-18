@@ -34,7 +34,7 @@ public class ClientSpawner : MonoBehaviour
     IEnumerator SpawnClient()
     {
 
-        print("Client Spawner Started");
+        //print("Client Spawner Started");
         while (true)
         {
             yield return new WaitForSeconds(Random.Range(SpawnIntervalMin, SpawnIntervalMax));

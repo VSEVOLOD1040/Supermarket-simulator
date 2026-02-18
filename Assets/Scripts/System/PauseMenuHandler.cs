@@ -14,7 +14,9 @@ public class PauseMenuHandler : MonoBehaviour
     public GameObject LeaveWithoutSavingButton;
     public GameObject LeaveWithoutSavingButton2;
 
-    
+    public GameObject MainFrame;
+    public GameObject SettingsFrame;
+
     public void Pause()
     {
         GameObject.Find("Player").GetComponent<PlayerController>().TurnOnCharacterMouseController(false);
@@ -32,7 +34,7 @@ public class PauseMenuHandler : MonoBehaviour
     public void SaveGame()
     {
         GameObject.Find("GAME_MANAGER").GetComponent<SaveManager>().Save();
-        Debug.Log("Game Saved");    
+        //////Debug.Log("Game Saved");    
 
     }
     public void LoadMenu(bool save)
@@ -56,7 +58,15 @@ public class PauseMenuHandler : MonoBehaviour
     }
     public void OpenSettings()
     {
+        MainFrame.SetActive(false);
 
+        SettingsFrame.SetActive(true);
+    }
+    public void CloseSettings()
+    {
+        MainFrame.SetActive(true);
+
+        SettingsFrame.SetActive(false);
     }
     // Start is called before the first frame update
     void Start()
@@ -67,7 +77,7 @@ public class PauseMenuHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.O))
+        if(Input.GetKeyDown(KeyCode.Escape))
         {
             if(PauseMenu.activeInHierarchy)
             {

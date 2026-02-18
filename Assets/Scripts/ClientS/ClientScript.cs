@@ -64,7 +64,7 @@ public class ClientScript : MonoBehaviour
             }
         }
 
-        Debug.Log("Active cash point: " + activeObjects.Count);
+        //Debug.Log("Active cash point: " + activeObjects.Count);
 
         GameObject cash = activeObjects[Random.Range(0, activeObjects.Count)];
 
@@ -141,7 +141,7 @@ public class ClientScript : MonoBehaviour
             {
                 if (ShelfList[CurrentTargetIndex].CheckIfShelfEmpty() == false)
                 {
-                    Debug.Log("Current index " + CurrentTargetIndex);
+                    //Debug.Log("Current index " + CurrentTargetIndex);
 
                     string ProductName = ShelfList[CurrentTargetIndex].current_product.Name;
                     int AmountNeeded = ProductList[ProductName]; //тут була помилка
@@ -149,7 +149,7 @@ public class ClientScript : MonoBehaviour
 
                     if (WillClientBuy(MarketData.GetPrice(ShelfList[CurrentTargetIndex].current_product)/ MarketData.GetBatchSize(ShelfList[CurrentTargetIndex].current_product), ShelfList[CurrentTargetIndex].current_product.Price))
                     {
-                        print("Client decided to buy " + ProductName);
+                        //print("Client decided to buy " + ProductName);
                         ProductSO product = ShelfList[CurrentTargetIndex].TakeProduct(AmountNeeded, out AmountTaken);
 
                         if (product != null)
@@ -196,7 +196,7 @@ public class ClientScript : MonoBehaviour
 
                     agent.SetDestination(MovementList[CurrentTargetIndex]);
 
-                    Debug.Log("Updated movement list. Amount: "+MovementList.Count);
+                    //Debug.Log("Updated movement list. Amount: "+MovementList.Count);
                     return;
                 }
 
@@ -235,7 +235,7 @@ public class ClientScript : MonoBehaviour
         }
         if (total > 0)
         {
-            print("Client paid: " + total);
+            //print("Client paid: " + total);
             AudioManager.instance.PlayAudio(audio_buy, transform.position);
 
 
@@ -247,7 +247,7 @@ public class ClientScript : MonoBehaviour
     {
         foreach (KeyValuePair<string, int> pair in dict)
         {
-            Debug.Log($"{pair.Key} : {pair.Value}");
+            //Debug.Log($"{pair.Key} : {pair.Value}");
         }
     }
 

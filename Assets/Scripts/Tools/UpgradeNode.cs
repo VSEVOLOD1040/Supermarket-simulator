@@ -92,7 +92,7 @@ public class UpgradeNode : MonoBehaviour, ISaveble
         else
         {
             gameData = new UpgradeNodeData(false);
-            Debug.Log("No data found for UpgradeNode: " + gameObject.name);
+            //Debug.Log("No data found for UpgradeNode: " + gameObject.name);
         }
     }
 }

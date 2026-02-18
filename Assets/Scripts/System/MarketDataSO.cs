@@ -43,7 +43,7 @@ public class MarketDataSO : ScriptableObject
     {
         Init();
 
-        Debug.Log("Getting batch size for product: " + product.Name);
+        //Debug.Log("Getting batch size for product: " + product.Name);
         if (entryLookup.TryGetValue(product, out MarketEntry entry))
             return entry.batchSize;
 

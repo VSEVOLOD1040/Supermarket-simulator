@@ -35,7 +35,7 @@ public class ShelfScript : MonoBehaviour, IInteractable, ISaveble
                 {
                     if (slot.GetComponent<ProductSlot>().Product == null)
                     {
-                        if (box_script.Amount > 0)
+                        if (box_script.Amount > 0) // можливо використовувати перевірку через TakeProduct()
                         {
                             if (current_product == null)
                             {
@@ -63,7 +63,7 @@ public class ShelfScript : MonoBehaviour, IInteractable, ISaveble
             }
             if (item.TryGetComponent<PriceToolScript>(out PriceToolScript priceToolScript))
             {
-                Debug.Log(current_product);
+                //Debug.Log(current_product);
                 if (current_product != null)
                 {
                     shelfUI.SwitchPanel(true, current_product);
@@ -99,7 +99,7 @@ public class ShelfScript : MonoBehaviour, IInteractable, ISaveble
     public ProductSO TakeProduct(int Amount, out int TakenAmount)
     {
         TakenAmount = 0;
-        Debug.Log("TakeProduct " + Amount);
+        //Debug.Log("TakeProduct " + Amount);
         ProductSO product = null;
         for (int i = 0; i < Amount; i++)
         {
@@ -203,11 +203,11 @@ public class ShelfScript : MonoBehaviour, IInteractable, ISaveble
     {   
 
         ShelfData loaded_data = JsonUtility.FromJson<ShelfData>(data);
-        Debug.Log(loaded_data);
+        //Debug.Log(loaded_data);
 
         for (int i = 0; i < loaded_data.Amount; i++)
         {
-            Debug.Log("Data loaded for Shelf: " + loaded_data.ProductName);
+            //Debug.Log("Data loaded for Shelf: " + loaded_data.ProductName);
 
             if (i < slots.Count)
             {
@@ -230,7 +230,7 @@ public class ShelfScript : MonoBehaviour, IInteractable, ISaveble
 
         for (int i = 0; i < shelfData.Amount; i++)
         {
-            Debug.Log("Data loaded for Shelf: " + shelfData.ProductName);
+            //Debug.Log("Data loaded for Shelf: " + shelfData.ProductName);
 
             slots[i].GetComponent<ProductSlot>().SetProduct(marketDataSO.GetProductByName(shelfData.ProductName));
         }

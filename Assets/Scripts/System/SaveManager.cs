@@ -14,7 +14,7 @@ public class SaveManager : MonoBehaviour
     {
         filePath = Application.persistentDataPath + "/Save.json";
 
-        Debug.Log(Application.persistentDataPath);
+        //Debug.Log(Application.persistentDataPath);
 
     }
 
@@ -26,7 +26,7 @@ public class SaveManager : MonoBehaviour
 
         //Dictionary<string, object> saveData = new Dictionary<string, object>();
         MonoBehaviour[] saveableObjects = GameObject.FindObjectsOfType<MonoBehaviour>(true);
-        Debug.Log(saveableObjects.Length);
+        //Debug.Log(saveableObjects.Length);
         foreach (var saveable in saveableObjects)
         {
             if (saveable is ISaveble saveObj)
@@ -69,13 +69,13 @@ public class SaveManager : MonoBehaviour
         string json = File.ReadAllText(filePath);
         saveData = JsonUtility.FromJson<SerializationWrapper>(json).ToDictionary();
 
-        Debug.Log("=====================");
+        //Debug.Log("=====================");
 
         foreach (var data  in saveData)
         {
-            Debug.Log(data);
+            //Debug.Log(data);
         }
-        Debug.Log("=====================");
+        //Debug.Log("=====================");
 
 
         MonoBehaviour[] saveableObjects = GameObject.FindObjectsOfType<MonoBehaviour>(true);
@@ -98,7 +98,7 @@ public class SaveManager : MonoBehaviour
                 }
                 if (saveData.ContainsKey(key))
                 {
-                    //Debug.Log(saveable.name +saveData[key].GetType());
+                    ////Debug.Log(saveable.name +saveData[key].GetType());
                     saveObj.LoadData(saveData[key]);
                 }
 
@@ -113,13 +113,13 @@ public class SaveManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F5))
         {
             Save();
-            Debug.Log("Game Saved");
+            //Debug.Log("Game Saved");
         }
 
         if (Input.GetKeyDown(KeyCode.F6))
         {
             Load();
-            Debug.Log("Game Loaded");
+            //Debug.Log("Game Loaded");
         }
 
         //timer += Time.deltaTime;

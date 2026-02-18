@@ -28,10 +28,19 @@ public class BoxScript : Box
         UpdateAmountUI();
     }
 
-    public void TakeProduct()
+    public bool TakeProduct()
     {
-        Amount--;
-        UpdateAmountUI();
+        if (Amount > 0)
+        {
+            Amount--;
+            UpdateAmountUI();
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+
 
         //if (Amount <= 0)
         //{

@@ -29,7 +29,7 @@ public class ProductsSupplierMenager : MonoBehaviour
         {
             GameObject slot = Instantiate(UIProductPrefab, UIParent);
             slot.GetComponent<ProductSlotSupplyInit>().Init(item, marketData.GetBatchSize(item), marketData.GetPrice(item));
-            Debug.Log(slot.name);
+            //Debug.Log(slot.name);
         }
     }
 

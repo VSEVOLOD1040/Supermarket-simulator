@@ -24,7 +24,7 @@ public class TimeManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(isShopOpen);
+        //Debug.Log(isShopOpen);
         isShopOpen = false;
 
         CurrentTimeCheck = 6;
@@ -86,13 +86,13 @@ public class TimeManager : MonoBehaviour
 
     public void ActivateEvent()
     {
-        Debug.Log("Activating Event at time: " + CurrentTime);
+        //Debug.Log("Activating Event at time: " + CurrentTime);
         events[(int)CurrentTime]?.Invoke();
     }
 
     public void TestEventDebug()
     {
-               Debug.Log("Event Activated at time: " + CurrentTime);
+               //Debug.Log("Event Activated at time: " + CurrentTime);
     }
 
 

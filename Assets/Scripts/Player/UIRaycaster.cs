@@ -30,7 +30,7 @@ public class UIRaycaster : MonoBehaviour
                     if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.E))
                     {
                         button.onClick.Invoke();
-                        Debug.Log("Clicked button: " + button.name);
+                        //Debug.Log("Clicked button: " + button.name);
                     }
                     break;
                 }

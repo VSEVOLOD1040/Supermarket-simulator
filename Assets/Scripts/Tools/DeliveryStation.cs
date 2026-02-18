@@ -1,16 +1,11 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
-using UnityEngine.Playables;
+using static BoxShelfSlot;
 
-
-public class BoxShelfSlot : MonoBehaviour, IInteractable, ISaveble
+public class DeliveryStation : MonoBehaviour, IInteractable
 {
-
     public GameObject Box;
-    public BoxShelfData gameData;
     public void Interact(GameObject interactor = null)
     {
         //print(interactor);
@@ -20,7 +15,7 @@ public class BoxShelfSlot : MonoBehaviour, IInteractable, ISaveble
             //print(item);
             if (item == null)
             {
-               
+
                 if (Box != null)
                 {
 
@@ -32,16 +27,33 @@ public class BoxShelfSlot : MonoBehaviour, IInteractable, ISaveble
                 }
 
             }
-            else if (item.TryGetComponent<Box>(out Box box_script))
+            else if (item.TryGetComponent<DeliveryBox>(out DeliveryBox delivery_box_script))
             {
                 if (Box == null)
                 {
-                    box_script.Drop();
+                    delivery_box_script.Drop();
 
                     Setbox(item);
                     interactor.GetComponent<PlayerScript>().CurrentItem = null;
                 }
-                
+
+
+            }
+            else if (item.TryGetComponent<BoxScript>(out BoxScript box_script))
+            {
+                if (Box != null)
+                {
+                    ProductSO product = box_script.product;
+                    if (Box.TryGetComponent<DeliveryBox>(out DeliveryBox delivery_box))
+                    {
+                        if (box_script.TakeProduct())
+                        {
+                            delivery_box.AddProduct(product, 1);
+                        }
+                    }
+                    
+                }
+
 
             }
 
@@ -49,7 +61,7 @@ public class BoxShelfSlot : MonoBehaviour, IInteractable, ISaveble
 
 
         }
-        
+
     }
 
     public void Setbox(GameObject box)
@@ -64,51 +76,6 @@ public class BoxShelfSlot : MonoBehaviour, IInteractable, ISaveble
         box_script.transform.SetParent(gameObject.transform);
         Box = box_script.gameObject;
     }
-    public object SaveData()
-    {
-        if (Box != null)
-        {
-            return new BoxShelfData(Box.GetComponent<BoxScript>().product, Box.GetComponent<BoxScript>().Amount);
-
-        }
-        else
-        {
-            return null;
-        }
-    }
-
-    public void LoadData(string data)
-    {
-
-        BoxShelfData loadedData = JsonUtility.FromJson<BoxShelfData>(data);
-
-        if (loadedData != null)
-        {
-            gameData = loadedData;
 
 
-            GameObject box = Instantiate(Resources.Load<GameObject>("Prefabs/Box"));
-            box.GetComponent<BoxScript>().Init(gameData.Product, gameData.Amount);
-            Setbox(box);
-
-        }
-
-
-        /////////
-        
-        
-
-    }
-    [Serializable]
-    public class BoxShelfData
-    {
-        public ProductSO Product;
-        public int Amount;
-
-        public BoxShelfData(ProductSO product, int amount)
-        {
-            Product = product;
-            Amount = amount;
-        }
-    }
 }

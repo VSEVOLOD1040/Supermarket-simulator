@@ -36,7 +36,7 @@ public class CloseShopButton : MonoBehaviour
         if (IsActive)
         {
             OnDayEnded?.Invoke();
-            Debug.Log("Day Ended");
+            //Debug.Log("Day Ended");
         }
         else
         {

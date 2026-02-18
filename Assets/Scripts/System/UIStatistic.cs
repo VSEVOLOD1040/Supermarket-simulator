@@ -41,7 +41,7 @@ public class UIStatistic : MonoBehaviour
 
         statisticPanel.SetActive(true);
         InitStatistic();
-        Debug.Log("Statistic Panel Opened");
+        //Debug.Log("Statistic Panel Opened");
     }
 
 
