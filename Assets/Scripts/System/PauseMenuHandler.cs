@@ -31,17 +31,18 @@ public class PauseMenuHandler : MonoBehaviour
         Time.timeScale = 1f;
 
     }
-    public void SaveGame()
+    async public void SaveGame()
     {
-        GameObject.Find("GAME_MANAGER").GetComponent<SaveManager>().Save();
+        await GameObject.Find("SAVE_MANAGER").GetComponent<SaveManager>().Save();
         //////Debug.Log("Game Saved");    
 
     }
-    public void LoadMenu(bool save)
+    async public void LoadMenu(bool save)
     {
         if (save)
         {
-            GameObject.Find("GAME_MANAGER").GetComponent<SaveManager>().Save();
+
+            await GameObject.Find("SAVE_MANAGER").GetComponent<SaveManager>().Save();
         }
         Time.timeScale = 1f;
         SceneManager.LoadScene("Menu");

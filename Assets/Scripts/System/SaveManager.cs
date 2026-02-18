@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Playables;
@@ -10,15 +11,22 @@ public class SaveManager : MonoBehaviour
     public string filePath;
 
 
-    private void Start()
+    async private void Start()
     {
+        
+
         filePath = Application.persistentDataPath + "/Save.json";
 
         //Debug.Log(Application.persistentDataPath);
 
+        await Task.Yield();
+        await Task.Delay(100);
+
+        await Load();
+
     }
 
-    public void Save()
+    async public Task Save()
     {
 
         List<string> keys = new List<string>();
@@ -59,14 +67,28 @@ public class SaveManager : MonoBehaviour
 
 
         string json = JsonUtility.ToJson(new SerializationWrapper(keys, values));
-        File.WriteAllText(filePath, json);
+
+
+        await Task.Run(() =>
+        {
+            File.WriteAllText(filePath, json);
+        });
+
     }
 
-    public void Load()
+    async public Task Load()
     {
+        Debug.Log("Loading save data...");
         Dictionary<string, string> saveData = new Dictionary<string, string>();
-        
-        string json = File.ReadAllText(filePath);
+
+        string json = await Task.Run(() => File.ReadAllText(filePath));
+
+        if (string.IsNullOrEmpty(json))
+        {
+            //Debug.Log("No save data found.");
+            return;
+        }
+
         saveData = JsonUtility.FromJson<SerializationWrapper>(json).ToDictionary();
 
         //Debug.Log("=====================");
@@ -108,17 +130,17 @@ public class SaveManager : MonoBehaviour
 
     float timer = 0f;
     bool isLoaded = false;
-    private void Update()
+    private async void Update()
     {
         if (Input.GetKeyDown(KeyCode.F5))
         {
-            Save();
+            await Save();
             //Debug.Log("Game Saved");
         }
 
         if (Input.GetKeyDown(KeyCode.F6))
         {
-            Load();
+            await Load();
             //Debug.Log("Game Loaded");
         }
 

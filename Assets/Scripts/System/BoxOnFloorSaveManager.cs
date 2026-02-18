@@ -22,6 +22,7 @@ public class BoxOnFloorSaveManager : MonoBehaviour, ISaveble
 
             foreach (BoxOnFloorData boxData in loadedData.boxes)
             {
+                Debug.Log($"Loading box: {boxData.productName}, Amount: {boxData.amount}, Position: {boxData.position}, Rotation: {boxData.rotation}");
                 GameObject box = Instantiate(Resources.Load<GameObject>("Prefabs/Box"));
                 box.transform.SetParent(GameObject.Find("BOXES").transform);
 
@@ -37,8 +38,10 @@ public class BoxOnFloorSaveManager : MonoBehaviour, ISaveble
 
     public object SaveData()
     {
+        Debug.Log("Saving boxes on floor...");
         foreach (Transform box in GameObject.Find("BOXES").transform)
         {
+            Debug.Log($"Saving box: {box.name}, Position: {box.position}, Rotation: {box.rotation}");
             BoxOnFloorData boxData = InitBoxData(box);
             
             BoxData.Add(boxData);
