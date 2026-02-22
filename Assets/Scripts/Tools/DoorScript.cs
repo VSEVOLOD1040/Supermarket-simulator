@@ -4,25 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 public class DoorScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            Open();
 
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            Close();
-        }
-    }
 
     public Transform Door;
     public bool IsOpen = false;
@@ -30,7 +13,15 @@ public class DoorScript : MonoBehaviour
 
     public float OpenAngle = -90f;
 
+    public bool CanBeOnpenedWithThisObject = false;
 
+    private void OnMouseDown()
+    {
+        if (CanBeOnpenedWithThisObject)
+        {
+            SwitchDoor();
+        }
+    }
 
     public void SwitchDoor()
     {
@@ -59,4 +50,6 @@ public class DoorScript : MonoBehaviour
         IsOpen = false;
 
     }
+
+    
 }

@@ -126,7 +126,6 @@ public class DeliveryManager : MonoBehaviour
         {
             if (CheckDictionary(item, order))
             {
-                Debug.Log("Check dictionary == true");
 
                 CurrentOrder = item;
                 break;

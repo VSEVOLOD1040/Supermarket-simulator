@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class CompleteDelivery : MonoBehaviour, IInteractable
 {
     public GameObject Box;
+    public DoorScript Door;
     public void Interact(GameObject interactor = null)
     {
+        if (!Door.IsOpen) { return; }
         //print(interactor);
         if (interactor != null)
         {
@@ -35,7 +38,8 @@ public class CompleteDelivery : MonoBehaviour, IInteractable
                 {
                     delivery_box_script.Drop();
 
-                    Setbox(item);
+                    StartCoroutine(Setbox(item));
+                    
                     interactor.GetComponent<PlayerScript>().CurrentItem = null;
                 }
 
@@ -45,7 +49,7 @@ public class CompleteDelivery : MonoBehaviour, IInteractable
 
     }
 
-    public void Setbox(GameObject box)
+    public IEnumerator Setbox(GameObject box)
     {
         Box box_script = box.GetComponent<Box>();
 
@@ -57,10 +61,19 @@ public class CompleteDelivery : MonoBehaviour, IInteractable
         box_script.transform.SetParent(gameObject.transform);
         Box = box_script.gameObject;
 
-        
+        Door.GetComponent<BoxCollider>().enabled = false;
+        Door.Close();
+        yield return new WaitForSeconds(2f);
+
         if (CheckDelivery())
         {
+
+            
+            
+
+   
             UIMessage.instance.ShowMessage("Delivery complete! You earned some money!");
+
             Destroy(Box);
             Box = null;
         }
@@ -69,6 +82,8 @@ public class CompleteDelivery : MonoBehaviour, IInteractable
             UIMessage.instance.ShowMessage("This order doesn't exist!");
 
         }
+
+        Door.GetComponent<BoxCollider>().enabled = true;
     }
 
     public bool CheckDelivery()
