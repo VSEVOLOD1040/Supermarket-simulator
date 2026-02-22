@@ -14,6 +14,8 @@ public class DeliveryManager : MonoBehaviour
     public float MaxTimeBetweenOrders = 15f;
 
     public float PriceMultiplier = 1.5f;
+
+    public int maxCount = 8;
     private void Awake()
     {
         if (Instance != null)
@@ -32,6 +34,8 @@ public class DeliveryManager : MonoBehaviour
             return result;
 
         int countToSelect = Random.Range(2, products.Count + 1);
+        countToSelect = Mathf.Min(countToSelect, maxCount);
+
         List<ProductSO> tempList = new List<ProductSO>(products);
         Shuffle(tempList);
 
@@ -82,6 +86,10 @@ public class DeliveryManager : MonoBehaviour
             yield return new WaitForSeconds(Random.Range(MinimalTimeBetweenOrders, MaxTimeBetweenOrders));
             if (TimeManager.isShopOpen)
             {
+                if (Orders.Count >= 3)
+                {
+                    continue;
+                }
                 Orders.Add(GetRandomProducts(marketData.GetProducts()));
                 UpdateUI();
             }
@@ -90,13 +98,14 @@ public class DeliveryManager : MonoBehaviour
 
     public void UpdateUI()
     {
-        Debug.Log("=== Order ===");
-        foreach(var item in Orders[Orders.Count -1])
-        {
+        GameObject.FindObjectOfType<OrderUIUpdate>().UpdateUI(Orders);
+        //Debug.Log("=== Order ===");
+        //foreach(var item in Orders[Orders.Count -1])
+        //{
             
-            print(item.Key + item.Value);
-        }
-        Debug.Log("======");
+        //    print(item.Key + item.Value);
+        //}
+        //Debug.Log("======");
     }
     // Start is called before the first frame update
     void Start()
@@ -138,6 +147,7 @@ public class DeliveryManager : MonoBehaviour
             GameObject.Find("Player").GetComponent<PlayerScript>().AddMoney(moneyEarned);
 
             Orders.Remove(CurrentOrder);
+            UpdateUI();
             return true;
         }
         else

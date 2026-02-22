@@ -33,4 +33,14 @@ public class Box : MonoBehaviour, IPickableObject, IInteractable
     {
         PickUp();
     }
+
+    public void FixSizeIssue()
+    {
+        transform.localScale = Vector3.one;
+    }
+
+    private void Start()
+    {
+        FixSizeIssue();
+    }
 }

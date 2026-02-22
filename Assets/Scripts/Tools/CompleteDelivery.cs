@@ -12,7 +12,24 @@ public class CompleteDelivery : MonoBehaviour, IInteractable
         if (interactor != null)
         {
             GameObject item = interactor.GetComponent<PlayerScript>().CurrentItem;
-            if (item.TryGetComponent<DeliveryBox>(out DeliveryBox delivery_box_script))
+            if (item == null)
+            {
+                if (Box != null)
+                {
+
+                    Box.GetComponent<Rigidbody>().isKinematic = false;
+                    Box.GetComponent<BoxCollider>().enabled = true;
+                    Box box_script = Box.GetComponent<Box>();
+                    box_script.PickUp();
+                    Box = null;
+                }
+
+
+
+
+
+            }
+            else if (item.TryGetComponent<DeliveryBox>(out DeliveryBox delivery_box_script))
             {
                 if (delivery_box_script != null)
                 {
@@ -24,10 +41,6 @@ public class CompleteDelivery : MonoBehaviour, IInteractable
 
 
             }
-
-
-
-
         }
 
     }

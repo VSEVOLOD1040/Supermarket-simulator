@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 using static BoxShelfSlot;
 
 public class DeliveryStation : MonoBehaviour, IInteractable
@@ -51,8 +52,32 @@ public class DeliveryStation : MonoBehaviour, IInteractable
                             delivery_box.AddProduct(product, 1);
                         }
                     }
-                    
+
                 }
+                else
+                {
+                    if (item.TryGetComponent<BoxScript>(out BoxScript boxScript))
+                    {
+                        if (Box == null)
+                        {
+                            if (boxScript.Amount > 0) return;
+
+                            boxScript.Drop();
+                            interactor.GetComponent<PlayerScript>().CurrentItem = null;
+                            Destroy(boxScript.gameObject);
+
+                            GameObject new_box = Instantiate(Resources.Load<GameObject>("Prefabs/DeliveryBox"));
+
+                            Setbox(new_box);
+                            new_box.GetComponent<Rigidbody>().isKinematic = true;
+                            new_box.GetComponent<BoxCollider>().enabled = false;
+                        }
+                    }
+
+                        
+
+                }
+                
 
 
             }

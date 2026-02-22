@@ -17,11 +17,18 @@ public class PauseMenuHandler : MonoBehaviour
     public GameObject MainFrame;
     public GameObject SettingsFrame;
 
+    public GameObject Computer;
     public void Pause()
     {
-        GameObject.Find("Player").GetComponent<PlayerController>().TurnOnCharacterMouseController(false);
-        PauseMenu.SetActive(true);
-        Time.timeScale = 0f;
+        if (!Computer.activeInHierarchy)
+        {
+            GameObject.Find("Player").GetComponent<PlayerController>().TurnOnCharacterMouseController(false);
+            CloseSettings();
+            PauseMenu.SetActive(true);
+
+            Time.timeScale = 0f;
+        }
+        
     }
     public void Resume()
     {
