@@ -2110,7 +2110,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &65509631
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2144,7 +2144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -10220,7 +10220,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Money: \u221A16"
+  m_text: 'Money: 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -27430,7 +27430,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Upgrade points: 0'
+  m_text: 'Upgrade Points: 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -34036,7 +34036,7 @@ Transform:
   m_GameObject: {fileID: 1538969151}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -49.800003, y: 0, z: 0}
+  m_LocalPosition: {x: -49.98, y: 0, z: 0}
   m_LocalScale: {x: 50, y: 1, z: 50}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -34954,7 +34954,7 @@ GameObject:
   - component: {fileID: 1556230098}
   - component: {fileID: 1556230097}
   m_Layer: 5
-  m_Name: Save (1)
+  m_Name: Settings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35205,6 +35205,7 @@ MonoBehaviour:
   MainFrame: {fileID: 1145954030}
   SettingsFrame: {fileID: 1454529854}
   Computer: {fileID: 1362664085}
+  Player: {fileID: 0}
 --- !u!114 &1558116423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37093,7 +37094,7 @@ MonoBehaviour:
   UIupgradePoints: {fileID: 1258433055}
   CurrentLevel: 0
   gameManager: {fileID: 2112425125}
-  Money: 500
+  Money: 0
   gameData:
     Balance: 0
     UpgradePoints: 0
@@ -38595,7 +38596,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1680484062}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.00000008940697, z: -0, w: 1}
+  m_LocalRotation: {x: -0, y: 0.00000037252897, z: -0, w: 1}
   m_LocalPosition: {x: -0.7159996, y: -0.172216, z: 1.117}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

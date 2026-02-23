@@ -22,7 +22,7 @@ public class Box : MonoBehaviour, IPickableObject, IInteractable
 
 
         gameObject.transform.SetParent(GameObject.Find("BOXES").transform);
-
+    //    FixSizeIssue();
     }
 
     public void PickUp()

@@ -63,6 +63,8 @@ public class BoxShelfSlot : MonoBehaviour, IInteractable, ISaveble
 
         box_script.transform.SetParent(gameObject.transform);
         Box = box_script.gameObject;
+
+        box_script.FixSizeIssue();
     }
     public object SaveData()
     {

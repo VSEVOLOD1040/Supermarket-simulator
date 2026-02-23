@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class PauseMenuHandler : MonoBehaviour
@@ -18,24 +19,35 @@ public class PauseMenuHandler : MonoBehaviour
     public GameObject SettingsFrame;
 
     public GameObject Computer;
-    public void Pause()
+
+    public GameObject Player;
+
+    public IEnumerator Pause()
     {
         if (!Computer.activeInHierarchy)
         {
-            GameObject.Find("Player").GetComponent<PlayerController>().TurnOnCharacterMouseController(false);
+           Player.GetComponent<UIRaycaster>().enabled = false;
+
+            yield return new WaitForSeconds(0.01f);
+
             CloseSettings();
             PauseMenu.SetActive(true);
 
+            Player.GetComponent<PlayerController>().TurnOnCharacterMouseController(false);
+            EventSystem.current.SetSelectedGameObject(null);
+           // Debug.Log(EventSystem.current.currentSelectedGameObject);
             Time.timeScale = 0f;
         }
         
     }
     public void Resume()
     {
-        GameObject.Find("Player").GetComponent<PlayerController>().TurnOnCharacterMouseController(true);
+        Player.GetComponent<PlayerController>().TurnOnCharacterMouseController(true);
 
         PauseMenu.SetActive(false);
         Time.timeScale = 1f;
+
+        Player.GetComponent<UIRaycaster>().enabled = true;
 
     }
     async public void SaveGame()
@@ -79,7 +91,7 @@ public class PauseMenuHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Player = GameObject.Find("Player");
     }
 
     // Update is called once per frame
@@ -93,7 +105,7 @@ public class PauseMenuHandler : MonoBehaviour
             }
             else
             {
-                Pause();
+                StartCoroutine(Pause());
             }
         }
     }
