@@ -15,6 +15,6 @@ MonoBehaviour:
   Name: Bread
   Size: 1
   prefab: {fileID: 6004203589859462821, guid: bbe57b958729b3c4fa4e65901e4be3d9, type: 3}
-  image: {fileID: 0}
+  image: {fileID: 21300000, guid: 8a7f2f8d06c38df4d87c158587a0be1c, type: 3}
   Price: 0
   HeighOffset: -0.09

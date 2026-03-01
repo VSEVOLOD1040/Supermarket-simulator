@@ -15,6 +15,6 @@ MonoBehaviour:
   Name: Water
   Size: 2
   prefab: {fileID: 2454195442112148960, guid: 3d835115b342c2b4b80cef24c9c45fa3, type: 3}
-  image: {fileID: 21300000, guid: d0fbad8f09aa5d0419ba400cfd359a2c, type: 3}
+  image: {fileID: 21300000, guid: 564493e279e7cc94f80ebb354afb7a1d, type: 3}
   Price: 3
   HeighOffset: 0.05

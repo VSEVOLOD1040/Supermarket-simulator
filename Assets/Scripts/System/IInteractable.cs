@@ -12,5 +12,5 @@ public interface IPickableObject
 
 public enum ItemSize
 {
-    BigItem, SmallItem, Tool, Broom
+    BigItem, SmallItem, Tool, Broom, Product
 }

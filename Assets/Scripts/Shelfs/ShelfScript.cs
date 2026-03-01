@@ -26,6 +26,17 @@ public class ShelfScript : MonoBehaviour, IInteractable, ISaveble
 
             if (item == null)
             {
+
+                // тут логіка діставання продукту
+
+                ProductSO product = TakeProduct(1, out int taken_amount);
+                if (product != null)
+                {
+                    GameObject newProductItem = Instantiate(product.prefab);
+                    newProductItem.GetComponent<ProductItemScript>().ThisProduct = product;
+                    interactor.GetComponent<PlayerScript>().Pickup(newProductItem, ItemSize.Product);
+                }
+
                 return;
             }
 
@@ -71,7 +82,38 @@ public class ShelfScript : MonoBehaviour, IInteractable, ISaveble
                 }
                 
             }
-            
+            if (item.TryGetComponent<ProductItemScript>(out ProductItemScript product_item))
+            {
+                foreach (var slot in slots)
+                {
+                    if (slot.GetComponent<ProductSlot>().Product == null)
+                    {
+                       
+                            if (current_product == null)
+                            {
+                                current_product = product_item.ThisProduct;
+                                UpdatePriceText();
+
+                            }
+
+                            if (product_item.ThisProduct == current_product)
+                            {
+                                slot.GetComponent<ProductSlot>()?.SetProduct(product_item.ThisProduct);
+
+                                shelfData.Amount = GetProductAmount();
+                                shelfData.ProductName = current_product.Name;
+
+                                product_item.Drop();
+                                Destroy(product_item.gameObject);
+
+                            break;
+                            }
+                        
+
+
+                    }
+                }
+            }
         }
     }
     public void UpdatePriceText()

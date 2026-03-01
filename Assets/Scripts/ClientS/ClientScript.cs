@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +28,8 @@ public class ClientScript : MonoBehaviour
 
     // Start is called before the first frame update
     public AudioSO audio_buy;
+
+    
     public bool WillClientBuy(float marketPrice, float currentPrice)
     {
         float chance;
@@ -77,26 +80,37 @@ public class ClientScript : MonoBehaviour
         ExitPoint = GameObject.Find("ExitPoint").transform;
         CashPoints = GameObject.Find("CASH_POINTS").transform;
 
-        ProductList = GetRandomProducts(MarketData.GetProducts());
-        //ProductList = GetTestProductList();
-        PrintDictionary(ProductList);
+        int MaxProducts = ClientManager.instance.GetMaxProductAmount();
 
-        List<Vector3> locations = FindProductLocation();
-
-        if (locations != null && locations.Count > 0)
+        if (MaxProducts > 0)
         {
-            MovementList.AddRange(locations);
-        }
+            ProductList = GetRandomProducts(MarketData.GetProducts(), MaxProducts);
+            //ProductList = GetTestProductList();
+            //PrintDictionary(ProductList);
 
-        if (MovementList.Count > 0)
-        {
+            List<Vector3> locations = FindProductLocation();
 
-            AddCashPoint();
+            if (locations != null && locations.Count > 0)
+            {
+                MovementList.AddRange(locations);
+            }
+
+            if (MovementList.Count > 0)
+            {
+
+                AddCashPoint();
+            }
+            else
+            {
+                Statistic.instance.CustomersDeserved += 1;
+            }
         }
         else
         {
-            Statistic.instance.CustomersDeserved += 1;
+            ///Debug.Log("Client with max_products 0 ");
         }
+
+
 
 
             MovementList.Add(ExitPoint.position);
@@ -251,7 +265,7 @@ public class ClientScript : MonoBehaviour
         }
     }
 
-    public Dictionary<string, int> GetRandomProducts(List<ProductSO> products)
+    public Dictionary<string, int> GetRandomProducts(List<ProductSO> products, int maxCount)
     {
         Dictionary<string, int> result = new Dictionary<string, int>();
 
@@ -259,6 +273,8 @@ public class ClientScript : MonoBehaviour
             return result;
 
         int countToSelect = Random.Range(2, products.Count + 1);
+        countToSelect = Mathf.Min(countToSelect, maxCount);
+
         List<ProductSO> tempList = new List<ProductSO>(products);
         Shuffle(tempList);
 

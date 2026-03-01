@@ -74,19 +74,34 @@ public class DeliveryStation : MonoBehaviour, IInteractable
                         }
                     }
 
-                        
+
 
                 }
-                
+
+
+
+            }
+            else if (item.TryGetComponent<ProductItemScript>(out ProductItemScript product_item))
+            {
+                if (Box != null)
+                {
+                    ProductSO product = product_item.ThisProduct;
+                    if (Box.TryGetComponent<DeliveryBox>(out DeliveryBox delivery_box))
+                    {
+
+                        delivery_box.AddProduct(product, 1);
+                        product_item.Drop();
+                        Destroy(product_item.gameObject);
+                    }
+
+                }
+
+
 
 
             }
 
-
-
-
         }
-
     }
 
     public void Setbox(GameObject box)

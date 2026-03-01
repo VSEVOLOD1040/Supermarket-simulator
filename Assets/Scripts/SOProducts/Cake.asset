@@ -15,6 +15,6 @@ MonoBehaviour:
   Name: Cake
   Size: 2
   prefab: {fileID: 670968100767293289, guid: 315127aba4125494697e3b631f437d67, type: 3}
-  image: {fileID: 21300000, guid: d9625c47f6e91684db4a5beb9457da28, type: 3}
+  image: {fileID: 21300000, guid: 37a73919ea3f6b44ba2dec25583b8e51, type: 3}
   Price: 0
   HeighOffset: -0.124

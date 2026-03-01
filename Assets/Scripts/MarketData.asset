@@ -49,3 +49,19 @@ MonoBehaviour:
     marketPrice: 80
     batchSize: 8
     IsEnabled: 1
+  - product: {fileID: 11400000, guid: 2fecce7a45e249d45b43b67db7a2196d, type: 2}
+    marketPrice: 68
+    batchSize: 30
+    IsEnabled: 1
+  - product: {fileID: 11400000, guid: 3b8eff5a765508141946a67a2ae6ee6e, type: 2}
+    marketPrice: 120
+    batchSize: 40
+    IsEnabled: 1
+  - product: {fileID: 11400000, guid: 45d96f360e345ee40b815b1885ff2563, type: 2}
+    marketPrice: 65
+    batchSize: 10
+    IsEnabled: 1
+  - product: {fileID: 11400000, guid: 3e178ac56df432744b7da226f7f55bfc, type: 2}
+    marketPrice: 90
+    batchSize: 22
+    IsEnabled: 1

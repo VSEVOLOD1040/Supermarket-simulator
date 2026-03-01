@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccd87c44e0d9e434baaaf535c8c0c38b, type: 3}
+  m_Name: Peas
+  m_EditorClassIdentifier: 
+  Name: Peas
+  Size: 2
+  prefab: {fileID: 5495740881770268456, guid: 74f7b3e6fefbe7147bd0fa8034247856, type: 3}
+  image: {fileID: 21300000, guid: 0ca623a895538f943904f42da9065c66, type: 3}
+  Price: 3
+  HeighOffset: -0.11

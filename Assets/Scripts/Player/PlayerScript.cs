@@ -13,7 +13,10 @@ public class PlayerScript : MonoBehaviour, ISaveble
     public GameObject SmallItemPositionGameObject;
     public GameObject ToolPosition;
     public GameObject BroomPosition;
-    
+    public GameObject ProductPosition;
+
+
+
     public TextMeshProUGUI UImoneytext;
     public TextMeshProUGUI UIlevel;
     public TextMeshProUGUI UIupgradePoints;
@@ -78,8 +81,17 @@ public class PlayerScript : MonoBehaviour, ISaveble
 
         if (CheckInventory())
         {
-            item.GetComponent<Collider>().enabled = false; //потрібно переробити для всіх коллайдерів
-            item.GetComponent<Rigidbody>().isKinematic = true;
+            if (item.TryGetComponent<Collider>(out Collider collider))
+            {
+                item.GetComponent<Collider>().enabled = false;
+
+            }
+            if (item.TryGetComponent<Rigidbody>(out Rigidbody rigidbody))
+            {
+                item.GetComponent<Rigidbody>().isKinematic = true;
+
+
+            }
 
             item.transform.SetParent(gameObject.transform, true);
             item.transform.rotation = gameObject.transform.rotation;
@@ -97,6 +109,9 @@ public class PlayerScript : MonoBehaviour, ISaveble
                     break;
                 case ItemSize.Broom:
                     item.transform.localPosition = BroomPosition.transform.localPosition;
+                    break;
+                case ItemSize.Product:
+                    item.transform.localPosition = ProductPosition.transform.localPosition;
                     break;
 
             }

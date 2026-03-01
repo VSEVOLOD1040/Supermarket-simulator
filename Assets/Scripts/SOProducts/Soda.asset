@@ -15,6 +15,6 @@ MonoBehaviour:
   Name: Soda
   Size: 2
   prefab: {fileID: 361396664999355158, guid: ecfbe8b10407e944e82784e7434813f1, type: 3}
-  image: {fileID: 21300000, guid: 2478265e8c648384892d203ad84a0ad5, type: 3}
+  image: {fileID: 21300000, guid: d22d117a740a7354db7988355b80acff, type: 3}
   Price: 5
   HeighOffset: -0.05

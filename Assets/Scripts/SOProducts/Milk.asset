@@ -15,6 +15,6 @@ MonoBehaviour:
   Name: Milk
   Size: 0
   prefab: {fileID: 8094825672760038938, guid: 8dae2d1b6e62a754880a834f634f3095, type: 3}
-  image: {fileID: 21300000, guid: 6a78b4d5672c9434fbf7475a09b1a960, type: 3}
+  image: {fileID: 21300000, guid: 625d9ca96c7590d4285b7eeae2a631d4, type: 3}
   Price: 2
   HeighOffset: 0.03

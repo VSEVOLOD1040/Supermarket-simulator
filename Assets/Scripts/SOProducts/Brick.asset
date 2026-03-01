@@ -15,6 +15,6 @@ MonoBehaviour:
   Name: Brick
   Size: 2
   prefab: {fileID: 4070979047441082109, guid: 78b10f564be23874fb47876173577543, type: 3}
-  image: {fileID: 21300000, guid: 4671dadf17fc6aa45b61955aa2f2f383, type: 3}
-  Price: 0
+  image: {fileID: 21300000, guid: 84bc5a46d782860438ac4a3a9d3897b8, type: 3}
+  Price: 2
   HeighOffset: -0.1

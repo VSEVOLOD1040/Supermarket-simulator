@@ -15,6 +15,6 @@ MonoBehaviour:
   Name: Salt
   Size: 2
   prefab: {fileID: 75013079225409223, guid: 83f10b53615fd9e458da520a89af3094, type: 3}
-  image: {fileID: 21300000, guid: a90be4a7a1fbb584bb426b7ae643f359, type: 3}
+  image: {fileID: 21300000, guid: 9c89f95d9b0c21c43a01cdc7dbbb8724, type: 3}
   Price: 0
   HeighOffset: -0.05

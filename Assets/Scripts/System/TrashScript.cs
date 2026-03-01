@@ -33,7 +33,7 @@ public class TrashScript : MonoBehaviour
             yield return new WaitForSeconds(SpawnInterval);
 
             Spawn();
-
+            GameObject.FindAnyObjectByType<ClientManager>().CalculateRating();
         }
     }
 
@@ -41,7 +41,7 @@ public class TrashScript : MonoBehaviour
     {
         Vector3 spawnPosition = GetRandomPosition(boxCollider.bounds);
         GameObject trash = TrashPrefabs[Random.Range(0, TrashPrefabs.Length)];
-        trash = Instantiate(trash, spawnPosition, Quaternion.identity);
+        trash = Instantiate(trash, spawnPosition, Quaternion.identity, transform);
 
         Collider[] collisions = Physics.OverlapSphere(trash.transform.position, OverLapSphereRadius);
 
@@ -75,4 +75,8 @@ public class TrashScript : MonoBehaviour
         return result;
     }
 
+    public int GetTrashCount()
+    {
+        return transform.childCount;
+    }
 }
