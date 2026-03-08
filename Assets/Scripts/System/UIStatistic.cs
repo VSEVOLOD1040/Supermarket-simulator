@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -38,7 +38,7 @@ public class UIStatistic : MonoBehaviour
 
     public void OpenPanel()
     {   
-
+        GameObject.FindAnyObjectByType<PlayerController>().TurnOnCharacterMouseController(false);
         statisticPanel.SetActive(true);
         InitStatistic();
         //Debug.Log("Statistic Panel Opened");

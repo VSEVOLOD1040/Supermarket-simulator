@@ -17,7 +17,7 @@ public class SaveManager : MonoBehaviour
 
         filePath = Application.persistentDataPath + "/Save.json";
 
-        //Debug.Log(Application.persistentDataPath);
+        Debug.Log(Application.persistentDataPath);
 
         await Task.Yield();
         await Task.Delay(100);
@@ -82,7 +82,7 @@ public class SaveManager : MonoBehaviour
         Dictionary<string, string> saveData = new Dictionary<string, string>();
 
         string json = await Task.Run(() => File.ReadAllText(filePath));
-
+        Debug.Log(File.ReadAllText(filePath));
         if (string.IsNullOrEmpty(json))
         {
             //Debug.Log("No save data found.");
@@ -130,28 +130,28 @@ public class SaveManager : MonoBehaviour
 
     float timer = 0f;
     bool isLoaded = false;
-    private async void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.F5))
-        {
-            await Save();
-            //Debug.Log("Game Saved");
-        }
+    //private async void Update()
+    //{
+    //    //if (Input.GetKeyDown(KeyCode.F5))
+    //    //{
+    //    //    await Save();
+    //    //    //Debug.Log("Game Saved");
+    //    //}
 
-        if (Input.GetKeyDown(KeyCode.F6))
-        {
-            await Load();
-            //Debug.Log("Game Loaded");
-        }
+    //    //if (Input.GetKeyDown(KeyCode.F6))
+    //    //{
+    //    //    await Load();
+    //    //    //Debug.Log("Game Loaded");
+    //    //}
 
-        //timer += Time.deltaTime;
-        //if (timer >= 5f && isLoaded == false)
-        //{
-        //    Load();
-        //    isLoaded = true;
-        //}
+    //    //timer += Time.deltaTime;
+    //    //if (timer >= 5f && isLoaded == false)
+    //    //{
+    //    //    Load();
+    //    //    isLoaded = true;
+    //    //}
         
-    }
+    //}
 
 
 }

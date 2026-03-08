@@ -34,10 +34,9 @@ public class AudioManager : MonoBehaviour
 
     public void PlayMusic(AudioSO audio, Vector3 position = new Vector3())
     {
-        if (position.x != 0 && position.y != 0 && position.z != 0)
-        {
-            StartCoroutine(PlayMusicCoroutine(audio, Instantiate(Resources.Load<GameObject>("Prefabs/AudioSource"), position, Quaternion.identity).GetComponent<AudioSource>()));
-        }
+
+       StartCoroutine(PlayMusicCoroutine(audio, Instantiate(Resources.Load<GameObject>("Prefabs/AudioSource"), position,  Quaternion.identity, FindAnyObjectByType<PlayerScript>().transform).GetComponent<AudioSource>()));
+
     }
     public IEnumerator PlayMusicCoroutine(AudioSO audio, AudioSource audioSource)
     {
@@ -46,5 +45,11 @@ public class AudioManager : MonoBehaviour
             audio.Play(audioSource);
             yield return new WaitForSeconds(audioSource.clip.length);
         }
+    }
+
+    public AudioSO music;
+    private void Start()
+    {
+        PlayMusic(music, Vector3.zero);
     }
 }

@@ -22,7 +22,7 @@ public class ProductManager : MonoBehaviour
 
     public void UpdateProductSupplierList()
     {
-        Computer.available_products=marketData.GetProducts();
+        Computer.available_products=marketData.GetProducts(true);
         
     }
 
@@ -30,5 +30,6 @@ public class ProductManager : MonoBehaviour
     {
         marketData.EnableProduct(NewProduct);
         UpdateProductSupplierList();
+
     }
 }

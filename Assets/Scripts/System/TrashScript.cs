@@ -34,6 +34,7 @@ public class TrashScript : MonoBehaviour
 
             Spawn();
             GameObject.FindAnyObjectByType<ClientManager>().CalculateRating();
+            //Debug.Log($"Trash: {GetTrashCount()} Rating: {GameObject.FindAnyObjectByType<ClientManager>().CalculateRating()}");
         }
     }
 

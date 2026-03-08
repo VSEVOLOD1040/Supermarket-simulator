@@ -17,51 +17,69 @@ MonoBehaviour:
     marketPrice: 50
     batchSize: 20
     IsEnabled: 1
+    IsPossibleToOrderUsingComputer: 1
   - product: {fileID: 11400000, guid: ad91f1ff89cb0514d91265cd356fe439, type: 2}
     marketPrice: 40
     batchSize: 15
     IsEnabled: 1
+    IsPossibleToOrderUsingComputer: 1
   - product: {fileID: 11400000, guid: 2750a00ffe07ca74883213a7b278562d, type: 2}
     marketPrice: 60
     batchSize: 10
     IsEnabled: 0
+    IsPossibleToOrderUsingComputer: 1
   - product: {fileID: 11400000, guid: f2be6aa2e92c19f468fe9126c7022473, type: 2}
     marketPrice: 80
     batchSize: 12
-    IsEnabled: 1
+    IsEnabled: 0
+    IsPossibleToOrderUsingComputer: 1
   - product: {fileID: 11400000, guid: db1c258871861564b8a3b45116acb13c, type: 2}
     marketPrice: 100
     batchSize: 15
-    IsEnabled: 1
+    IsEnabled: 0
+    IsPossibleToOrderUsingComputer: 1
   - product: {fileID: 11400000, guid: d160a229bf02d744da2c9539dadfd538, type: 2}
     marketPrice: 40
     batchSize: 15
-    IsEnabled: 1
+    IsEnabled: 0
+    IsPossibleToOrderUsingComputer: 1
   - product: {fileID: 11400000, guid: b333a4f9641cdf548aba0d4094900d46, type: 2}
     marketPrice: 45
     batchSize: 12
-    IsEnabled: 1
+    IsEnabled: 0
+    IsPossibleToOrderUsingComputer: 1
   - product: {fileID: 11400000, guid: a882c1ef8b3b233419574c886e67b7a9, type: 2}
     marketPrice: 60
     batchSize: 12
-    IsEnabled: 1
+    IsEnabled: 0
+    IsPossibleToOrderUsingComputer: 1
   - product: {fileID: 11400000, guid: 8e4a02cc0fa9df14588a71373a45405d, type: 2}
     marketPrice: 80
     batchSize: 8
-    IsEnabled: 1
+    IsEnabled: 0
+    IsPossibleToOrderUsingComputer: 1
   - product: {fileID: 11400000, guid: 2fecce7a45e249d45b43b67db7a2196d, type: 2}
     marketPrice: 68
     batchSize: 30
-    IsEnabled: 1
+    IsEnabled: 0
+    IsPossibleToOrderUsingComputer: 1
   - product: {fileID: 11400000, guid: 3b8eff5a765508141946a67a2ae6ee6e, type: 2}
     marketPrice: 120
     batchSize: 40
-    IsEnabled: 1
+    IsEnabled: 0
+    IsPossibleToOrderUsingComputer: 1
   - product: {fileID: 11400000, guid: 45d96f360e345ee40b815b1885ff2563, type: 2}
     marketPrice: 65
     batchSize: 10
-    IsEnabled: 1
+    IsEnabled: 0
+    IsPossibleToOrderUsingComputer: 1
   - product: {fileID: 11400000, guid: 3e178ac56df432744b7da226f7f55bfc, type: 2}
     marketPrice: 90
     batchSize: 22
-    IsEnabled: 1
+    IsEnabled: 0
+    IsPossibleToOrderUsingComputer: 1
+  - product: {fileID: 11400000, guid: 3b190b295362e084a937a4df384e2344, type: 2}
+    marketPrice: 5
+    batchSize: 1
+    IsEnabled: 0
+    IsPossibleToOrderUsingComputer: 0

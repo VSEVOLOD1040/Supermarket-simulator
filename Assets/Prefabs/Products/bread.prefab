@@ -88,6 +88,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  ThisProduct: {fileID: 0}
 --- !u!65 &510532131330367831
 BoxCollider:
   m_ObjectHideFlags: 0

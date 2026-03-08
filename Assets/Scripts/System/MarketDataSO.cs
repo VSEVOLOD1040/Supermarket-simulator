@@ -12,6 +12,8 @@ public class MarketDataSO : ScriptableObject
         public int batchSize;
 
         public bool IsEnabled;
+        public bool IsPossibleToOrderUsingComputer;
+
     }
 
     public MarketEntry[] entries;
@@ -49,13 +51,22 @@ public class MarketDataSO : ScriptableObject
 
         return 0;
     }
-    public List<ProductSO> GetProducts()
+    public List<ProductSO> GetProducts(bool OnlyOrderable = false)
     {
         List<ProductSO> products = new List<ProductSO>();
         foreach (var entry in entries)
         {
-            if (entry.product != null && entry.IsEnabled)
-                products.Add(entry.product);
+            if (OnlyOrderable)
+            {
+                if (entry.product != null && entry.IsEnabled && entry.IsPossibleToOrderUsingComputer)
+                    products.Add(entry.product);
+            }
+            else
+            {
+                if (entry.product != null && entry.IsEnabled)
+                    products.Add(entry.product);
+            }
+            
         }
         return products;
     }

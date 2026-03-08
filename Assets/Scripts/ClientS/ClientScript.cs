@@ -29,7 +29,10 @@ public class ClientScript : MonoBehaviour
     // Start is called before the first frame update
     public AudioSO audio_buy;
 
-    
+    public GameObject CoffeCup;
+
+    public List<GameObject> Characters;
+    public float HeightOffset = -0.5f;
     public bool WillClientBuy(float marketPrice, float currentPrice)
     {
         float chance;
@@ -80,6 +83,7 @@ public class ClientScript : MonoBehaviour
         ExitPoint = GameObject.Find("ExitPoint").transform;
         CashPoints = GameObject.Find("CASH_POINTS").transform;
 
+
         int MaxProducts = ClientManager.instance.GetMaxProductAmount();
 
         if (MaxProducts > 0)
@@ -116,6 +120,17 @@ public class ClientScript : MonoBehaviour
             MovementList.Add(ExitPoint.position);
 
         agent.SetDestination(MovementList[CurrentTargetIndex]);
+
+        SetVisualCharacterPartOfThisClient();
+
+    }
+
+    void SetVisualCharacterPartOfThisClient()
+    {
+        int index = Random.Range(0, Characters.Count);
+        GameObject character = Characters[index];
+        Instantiate(character, new Vector3(transform.position.x, transform.position.y-HeightOffset, transform.position.z), Quaternion.identity, transform);
+       gameObject.GetComponent<MeshRenderer>().enabled = false;
     }
 
     // Update is called once per frame
@@ -145,81 +160,91 @@ public class ClientScript : MonoBehaviour
     }
     void HandleMovement()
     {
-           
+        // сначала очищаем устаревшие/уничтоженные полки и синхронизируем списки
+        CleanUpShelvesAndMovementList();
 
         if (agent.destination != null && agent.remainingDistance < 0.16f && CurrentTargetIndex < MovementList.Count)
         {
-
-            // Тут потрібно додати перевірку, щоб клієнт не міг взяти більше товару, ніж потрібно 
+            // Если текущая цель соответствует индексу в ShelfList (т.е. это цель-полка)
             if (CurrentTargetIndex >= 0 && CurrentTargetIndex < ShelfList.Count)
             {
-                if (ShelfList[CurrentTargetIndex].CheckIfShelfEmpty() == false)
-                {
-                    //Debug.Log("Current index " + CurrentTargetIndex);
+                var currentShelf = ShelfList[CurrentTargetIndex];
 
-                    string ProductName = ShelfList[CurrentTargetIndex].current_product.Name;
-                    int AmountNeeded = ProductList[ProductName]; //тут була помилка
+                if (currentShelf == null)
+                {
+                    // Полка была разрушена/удалена после сбора — просто пропускаем её:
+                    // синхронизируем списки и не увеличиваем CurrentTargetIndex вручную здесь,
+                    // т.к. ниже оно увеличится как обычно.
+                    ShelfList.RemoveAt(CurrentTargetIndex);
+                    if (CurrentTargetIndex < MovementList.Count)
+                        MovementList.RemoveAt(CurrentTargetIndex);
+
+                    // Если после удаления список пуст — попробуем найти заново
+                    if (ShelfList.Count == 0 && ProductList != null && ProductList.Count > 0)
+                    {
+                        MovementList.Clear();
+                        ShelfList.Clear();
+                        CurrentTargetIndex = 0;
+                        MovementList = new List<Vector3>();
+                        var newLocations = FindProductLocation();
+                        if (newLocations != null)
+                            MovementList.AddRange(newLocations);
+                        AddCashPoint();
+                        MovementList.Add(ExitPoint.position);
+                        agent.SetDestination(MovementList[CurrentTargetIndex]);
+                        return;
+                    }
+                    // не делаем return — позволим инкремент и переход к следующей цели ниже
+                }
+                else if (!currentShelf.CheckIfShelfEmpty())
+                {
+                    string ProductName = currentShelf.current_product.Name;
+                    int AmountNeeded = ProductList[ProductName];
                     int AmountTaken = 0;
 
-                    if (WillClientBuy(MarketData.GetPrice(ShelfList[CurrentTargetIndex].current_product)/ MarketData.GetBatchSize(ShelfList[CurrentTargetIndex].current_product), ShelfList[CurrentTargetIndex].current_product.Price))
+                    if (WillClientBuy(MarketData.GetPrice(currentShelf.current_product) / MarketData.GetBatchSize(currentShelf.current_product), currentShelf.current_product.Price))
                     {
-                        //print("Client decided to buy " + ProductName);
-                        ProductSO product = ShelfList[CurrentTargetIndex].TakeProduct(AmountNeeded, out AmountTaken);
+                        ProductSO product = currentShelf.TakeProduct(AmountNeeded, out AmountTaken);
 
                         if (product != null)
                         {
+                            if (product.Name == "Coffe cup")
+                            {
+                                CoffeCup.SetActive(true);
+                            }
 
                             if (ProductsTaken.ContainsKey(product))
-                            {
                                 ProductsTaken[product] += AmountTaken;
-                            }
-                            else ProductsTaken.Add(product, AmountTaken);
+                            else
+                                ProductsTaken.Add(product, AmountTaken);
 
                             if (AmountNeeded - AmountTaken <= 0)
-                            {
                                 ProductList.Remove(ProductName);
-                            }
                             else
-                            {
                                 ProductList[ProductName] = AmountNeeded - AmountTaken;
-                            }
                         }
                     }
-                    
                 }
                 else
                 {
+                    // если полка пустая — пересобираем маршрут
                     MovementList.Clear();
                     ShelfList.Clear();
                     CurrentTargetIndex = 0;
-
                     MovementList = new List<Vector3>();
-                    
+
                     List<Vector3> newLocations = FindProductLocation();
                     if (newLocations != null)
-                    {
                         MovementList.AddRange(newLocations);
 
-                    }
-
-
                     AddCashPoint();
-
-
                     MovementList.Add(ExitPoint.position);
 
                     agent.SetDestination(MovementList[CurrentTargetIndex]);
-
-                    //Debug.Log("Updated movement list. Amount: "+MovementList.Count);
                     return;
                 }
-
-
-
-
-                //ShelfList.RemoveAt(CurrentTargetIndex);
             }
-            else if(CurrentTargetIndex == MovementList.Count - 2)
+            else if (CurrentTargetIndex == MovementList.Count - 2)
             {
                 GameObject.Find("Player").GetComponent<PlayerScript>().AddMoney(Pay());
                 Statistic.instance.CustomersServed += 1;
@@ -232,14 +257,25 @@ public class ClientScript : MonoBehaviour
             CurrentTargetIndex++;
             if (CurrentTargetIndex < MovementList.Count)
             {
-
                 agent.destination = MovementList[CurrentTargetIndex];
             }
         }
     }
 
-    
 
+    void CleanUpShelvesAndMovementList()
+    {
+
+        for (int i = ShelfList.Count - 1; i >= 0; i--)
+        {
+            if (ShelfList[i] == null)
+            {
+                ShelfList.RemoveAt(i);
+                if (i < MovementList.Count)
+                    MovementList.RemoveAt(i);
+            }
+        }
+    }
     float Pay()
     {
         float total = 0f;
@@ -401,54 +437,55 @@ public class ClientScript : MonoBehaviour
 
     public List<Vector3> FindProductLocation()
     {
+        // Очистим предыдущие значения — мы заново заполним ShelfList и locations
         List<Vector3> locations = new List<Vector3>();
+        ShelfList.Clear();
+
         ShelfScript[] allShelves = FindObjectsOfType<ShelfScript>();
 
+        // Собираем нужные продукты и количество
         Dictionary<ProductSO, int> targetProducts = new Dictionary<ProductSO, int>();
         foreach (string productName in ProductList.Keys)
         {
             ProductSO targetProduct = MarketData.GetProducts().Find(p => p.Name == productName);
             if (targetProduct != null)
-                targetProducts.Add(targetProduct, ProductList[productName]);
+                targetProducts[targetProduct] = ProductList[productName];
         }
 
         foreach (var productEntry in targetProducts)
         {
-            ProductSO product = productEntry.Key; // Продукт котрий потрібен
-            int amountNeeded = productEntry.Value; // Кількість яка потрібна
-            List<ShelfScript> productShelves = new List<ShelfScript>();
+            ProductSO product = productEntry.Key;
+            int amountNeeded = productEntry.Value;
 
-            foreach (var productShelf in allShelves)
-            {
-                if (productShelf.current_product == product)
-                {
-                    productShelves.Add(productShelf);
-                }
-            }
-
-            productShelves.OrderByDescending(s => s.GetProductAmount());
+            // Фильтруем только валидные полки (не null) с нужным продуктом и количеством > 0,
+            // затем сортируем по убыванию количества.
+            List<ShelfScript> productShelves = allShelves
+                .Where(s => s != null && s.current_product == product && s.GetProductAmount() > 0)
+                .OrderByDescending(s => s.GetProductAmount())
+                .ToList();
 
             foreach (ShelfScript shelf in productShelves)
             {
-                int shelfAmount = shelf.GetProductAmount();
-
-                if (shelfAmount <= 0)
-                    continue;
-
-                ShelfList.Add(shelf);
-                Transform npcPoint = shelf.transform.parent.Find("NPCPoint");
-                if (npcPoint != null)
-                    locations.Add(npcPoint.position);
-
-                amountNeeded -= shelfAmount;
                 if (amountNeeded <= 0)
                     break;
+
+                Transform npcPoint = shelf.transform.parent?.Find("NPCPoint");
+                if (npcPoint == null)
+                {
+                    // Если нет NPCPoint — пропускаем эту полку. Это предотвращает рассинхронизацию списков.
+                    continue;
+                }
+
+                ShelfList.Add(shelf);
+                locations.Add(npcPoint.position);
+
+                amountNeeded -= shelf.GetProductAmount();
             }
         }
 
         return locations.Count > 0 ? locations : null;
     }
 
-       
+
 }
     

@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  ThisProduct: {fileID: 0}
 --- !u!54 &3054754630575366640
 Rigidbody:
   m_ObjectHideFlags: 0

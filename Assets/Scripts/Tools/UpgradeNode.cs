@@ -60,6 +60,8 @@ public class UpgradeNode : MonoBehaviour, ISaveble
         gameObject.GetComponent<Image>().color = Color.green;   
 
         gameData.IsActivated = true;
+
+        Debug.Log("Upgrade activated: " + gameObject.name);
     }
 
     public void Activate()

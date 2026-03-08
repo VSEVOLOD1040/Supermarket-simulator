@@ -14,12 +14,17 @@ public class AudioSO : ScriptableObject
     [Range(-3, 3)]
     public float pitch = 1f;
     
+
+
     public void Play(AudioSource audio)
     {
         audio.clip = audioClips[Random.Range(0,audioClips.Count-1)];
         audio.volume = volume;
         audio.pitch = pitch;
         audio.Play();
+
     }
+
+    
 }
 

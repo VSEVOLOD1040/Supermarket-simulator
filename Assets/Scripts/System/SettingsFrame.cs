@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -42,5 +43,12 @@ public class SettingsFrame : MonoBehaviour
         {
             audio.volume = Music.value;
         }
+
+        GameObject.FindObjectsOfType<AudioSource>().ToList<AudioSource>().ForEach(audioSource =>
+        {
+
+                audioSource.volume = Music.value;
+
+        });
     }
 }

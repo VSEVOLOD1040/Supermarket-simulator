@@ -4,9 +4,11 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.UI;
+
 
 public class ShelfScript : MonoBehaviour, IInteractable, ISaveble
 {
@@ -18,7 +20,7 @@ public class ShelfScript : MonoBehaviour, IInteractable, ISaveble
 
     public ShelfData shelfData;
 
-    public void Interact(GameObject interactor = null)
+    virtual public void Interact(GameObject interactor = null)
     {
         if (interactor != null)
         {
@@ -42,6 +44,7 @@ public class ShelfScript : MonoBehaviour, IInteractable, ISaveble
 
             if (item.TryGetComponent<BoxScript>(out BoxScript box_script))
             {
+
                 foreach (var slot in slots)
                 {
                     if (slot.GetComponent<ProductSlot>().Product == null)
@@ -138,7 +141,7 @@ public class ShelfScript : MonoBehaviour, IInteractable, ISaveble
         }
     }
 
-    public ProductSO TakeProduct(int Amount, out int TakenAmount)
+    virtual public ProductSO TakeProduct(int Amount, out int TakenAmount)
     {
         TakenAmount = 0;
         //Debug.Log("TakeProduct " + Amount);
@@ -212,7 +215,8 @@ public class ShelfScript : MonoBehaviour, IInteractable, ISaveble
     // Start is called before the first frame update
     void Start()
     {
-        
+        shelfUI = FindObjectOfType<ShelfUI>(true);
+        SetPriceButton = shelfUI.transform.GetChild(6).GetComponent<Button>();
     }
     private void Awake()
     {
@@ -241,7 +245,7 @@ public class ShelfScript : MonoBehaviour, IInteractable, ISaveble
 
     }
 
-    public void LoadData(string data)
+    virtual public void LoadData(string data)
     {   
 
         ShelfData loaded_data = JsonUtility.FromJson<ShelfData>(data);
@@ -257,8 +261,11 @@ public class ShelfScript : MonoBehaviour, IInteractable, ISaveble
 
             }
         }
+        current_product = marketDataSO.GetProductByName(loaded_data.ProductName);
 
         shelfData = loaded_data;
+
+        UpdatePriceText();
     }
 
     private void OnEnable()
